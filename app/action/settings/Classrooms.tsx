@@ -1,7 +1,8 @@
 'use server'
 
 import { AddClassroom, EditClassroom, RemoveClassroom } from "@/app/functions/settings/classrooms/Classrooms";
-import { ClassroomData } from "@/app/types/Settings/Classrooms";
+import { AddFeeForClassroom, EditFeeForClassroom, RemoveFeeForClassroom } from "@/app/functions/settings/classrooms/Fees";
+import { ClassroomData, FeeForClassroomData } from "@/app/types/Settings/Classrooms";
 import { revalidatePath } from "next/cache";
 
 export async function SubmitAddClassroom(formData: FormData) {
@@ -66,6 +67,55 @@ export async function SubmitRemoveClassroom(id: number) {
   }
   
   const res = await RemoveClassroom(id)
+  revalidatePath('/admin/classrooms');
+  return res;
+}
+
+
+export async function SubmitAddFeeForClassroom(formData: FormData) {
+  const fee = Number(formData.get('fee')) as number;
+  const classroom = Number(formData.get('classroom')) as number;
+
+  if (!fee) {
+    return { message:"กรุณาเลือกค่าธรรมเนียม",type:"error" };
+  }
+
+  if (!classroom) {
+    return { message:"กรุณาเลือกห้องเรียน",type:"error" };
+  }
+
+  const res = await AddFeeForClassroom({ fee: fee, classroom: classroom});
+
+  revalidatePath('/admin/fee/classrooms');
+  return res;
+}
+
+export async function SubmitEditFeeForClassroom(feeForClassroom: FeeForClassroomData) {
+  const { id, fee, classroom } = feeForClassroom
+  
+  if (!id) {
+    return { message:"ไม่สามารถแก้ไขห้องได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
+  }
+
+  if (!fee) {
+    return { message:"กรุณาเลือกค่าธรรมเนียม",type:"error" };
+  }
+
+  if (!classroom) {
+    return { message:"กรุณาเลือกห้องเรียน",type:"error" };
+  }
+  
+  const res = await EditFeeForClassroom(feeForClassroom)
+  revalidatePath('/admin/fee/classrooms');
+  return res;
+}
+
+export async function SubmitRemoveFeeForClassroom(id: number) {
+  if (!id) {
+    return { message:"ไม่สามารถลบห้องได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
+  }
+  
+  const res = await RemoveFeeForClassroom(id)
   revalidatePath('/admin/classrooms');
   return res;
 }
