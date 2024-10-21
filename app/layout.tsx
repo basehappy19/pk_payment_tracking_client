@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 import { UserProvider } from "./contexts/User";
 import NextTopLoader from 'nextjs-toploader';
+import Footer from "./layout/Footer";
 
 export default async function RootLayout({
   children,
@@ -27,6 +28,7 @@ export default async function RootLayout({
             >
               <NextTopLoader color="#f55bce" />
               {children}
+              <Footer />
             </ThemeProvider>
           </UserProvider>
         </Providers>
