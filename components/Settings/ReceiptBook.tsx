@@ -11,6 +11,7 @@ import TablePagination from './TablePagination'
 import { ReceiptBook, ReceiptBookData } from '@/app/types/Settings/ReceiptBooks'
 import { SubmitAddReceiptBook, SubmitEditReceiptBook, SubmitRemoveReceiptBook } from '@/app/action/settings/ReceiptBooks'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface ReceiptBookEditProps {
   editingReceiptBook: ReceiptBookData | null;
@@ -187,10 +188,12 @@ export const ReceiptBookEdit: FC<ReceiptBookEditProps> = ({ editingReceiptBook, 
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขเล่มใบเสร็จ</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>ชื่อเล่ม</Label>
         <Input
           value={editingReceiptBook.name}
           onChange={(e) => setEditingReceiptBook({ ...editingReceiptBook, name: e.target.value })}
         />
+        <Label>จำนวนหน้าทั้งหมด</Label>
         <Input
           value={editingReceiptBook.total_page}
           onChange={(e) => setEditingReceiptBook({ ...editingReceiptBook, total_page: Number(e.target.value) })}

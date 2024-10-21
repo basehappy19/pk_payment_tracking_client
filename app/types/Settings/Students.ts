@@ -60,3 +60,35 @@ export interface StudentReceiptData {
     updatedAt:string,
 }
 
+export interface StudentInClassroom {
+    data: StudentInClassroomData[],
+    pagination: Pagination
+}
+
+export interface StudentInClassroomData {
+    id:number,
+    student_sid:number,
+    classroom:{
+        id:number,
+        education_year:{ 
+            id:number,
+            name:string,
+        },
+        education_term:{
+            id:number,
+            name:string,
+        },
+        level:{
+            id:number,
+            name:string,
+        },
+        room:{
+            id:number,
+            name:string,
+        },
+    },
+    no:number,
+    pay_status: "none" | "paying" | "done"
+    createdAt:string,
+    updatedAt:string,
+}

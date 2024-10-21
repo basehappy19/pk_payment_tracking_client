@@ -12,6 +12,7 @@ import { Fee, FeeData } from '@/app/types/Settings/Fees'
 import { SubmitAddFee, SubmitEditFee, SubmitRemoveFee } from '@/app/action/settings/Fees'
 import { Res } from '@/app/types/Settings/Response'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { Label } from '../ui/label'
 
 interface FeeEditProps {
   education_year_options: { id: number, name: string }[]
@@ -68,12 +69,25 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
       toast[res.type](res.message);
       if (res.type !== 'error') {
         ref.current?.reset();
+        setSelectedValues({
+          education_year: '',
+          education_term: '',
+        });
       }
     } catch (error) {
       console.error('Failed to add fee:', error);
       toast.error('ไม่สามารถเพื่มค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
     }
   };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setSelectedValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const [selectedValues, setSelectedValues] = useState({
+    education_year: '',
+    education_term: '',
+  });
 
   return (
     <form ref={ref} action={async (formData: FormData) => {
@@ -93,7 +107,9 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
           required
         />
         <div className='w-full'>
-          <Select name='education_year'>
+          <Select name='education_year'
+            value={selectedValues.education_year}
+            onValueChange={(value) => handleSelectChange('education_year', value)}>
             <SelectTrigger id="education_year">
               <SelectValue placeholder="เลือกปีการศึกษา" />
             </SelectTrigger>
@@ -107,7 +123,10 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
           </Select>
         </div>
         <div className='w-full'>
-          <Select name='education_term'>
+          <Select name='education_term'
+            value={selectedValues.education_term}
+            onValueChange={(value) => handleSelectChange('education_term', value)}
+          >
             <SelectTrigger id="education_term">
               <SelectValue placeholder="เลือกภาคเรียน" />
             </SelectTrigger>
@@ -227,14 +246,18 @@ export const FeeEdit: FC<FeeEditProps> = ({ education_year_options, education_te
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขค่าธรรมเนียม</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>ค่าธรรมเนียม</Label>
         <Input
           value={editingFee.name}
           onChange={(e) => setEditingFee({ ...editingFee, name: e.target.value })}
         />
+        <Label>จำนวน</Label>
         <Input
           value={editingFee.amount}
           onChange={(e) => setEditingFee({ ...editingFee, amount: Number(e.target.value) })}
         />
+        <Label>ปีการศึกษา</Label>
+
         <div className="w-full">
           <Select
             defaultValue={
@@ -255,6 +278,8 @@ export const FeeEdit: FC<FeeEditProps> = ({ education_year_options, education_te
             </SelectContent>
           </Select>
         </div>
+        <Label>ภาคเรียน</Label>
+
         <div className="w-full">
           <Select
             defaultValue={

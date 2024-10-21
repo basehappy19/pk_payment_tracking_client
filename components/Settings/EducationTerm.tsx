@@ -11,6 +11,7 @@ import { useFormStatus } from 'react-dom'
 import { useRouter } from 'next/navigation'
 import TablePagination from './TablePagination'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface EducationTermEditProps {
   editingTerm: EducationTermData | null;
@@ -179,6 +180,9 @@ export const EducationTermEdit: FC<EducationTermEditProps> = ({ editingTerm, set
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขภาคเรียน</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>
+          ภาคเรียน
+        </Label>
         <Input
           value={editingTerm.name}
           onChange={(e) => setEditingTerm({ ...editingTerm, name: e.target.value })}

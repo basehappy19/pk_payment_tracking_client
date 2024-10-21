@@ -1,5 +1,3 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/auth-options";
 import type { Metadata } from 'next'
  
 export const metadata: Metadata = {
@@ -8,10 +6,10 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
   
   return (
     <div>
+      home
     </div>
   );
 }

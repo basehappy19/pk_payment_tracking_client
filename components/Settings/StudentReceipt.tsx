@@ -12,12 +12,13 @@ import { StudentReceipt, StudentReceiptData } from '@/app/types/Settings/Student
 import { SubmitAddStudentReceipt, SubmitEditStudentReceipt, SubmitRemoveStudentReceipt } from '@/app/action/settings/StudentReceipts'
 import { Res } from '@/app/types/Settings/Response'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { Label } from '../ui/label'
 
 interface StudentReceiptEditProps {
-  receiptBookOptions:{
-    receiptBooks:{
-      id:number,
-      name:string,
+  receiptBookOptions: {
+    receiptBooks: {
+      id: number,
+      name: string,
     }[]
   }
   editingStudentReceipt: StudentReceiptData | null;
@@ -60,30 +61,41 @@ export const SearchStudentReceipt = () => {
 };
 
 interface StudentReceiptAdd {
-  receiptBookOptions:{
-    receiptBooks:{
-      id:number,
-      name:string,
-      total_page:number,
+  receiptBookOptions: {
+    receiptBooks: {
+      id: number,
+      name: string,
+      total_page: number,
     }[]
   }
 }
 
-export const StudentReceiptAdd : FC<StudentReceiptAdd> = ({receiptBookOptions}) => {
+export const StudentReceiptAdd: FC<StudentReceiptAdd> = ({ receiptBookOptions }) => {
   const ref = useRef<HTMLFormElement>(null);
   const handleSubmit = async (formData: FormData) => {
     try {
-      const res : Res = await SubmitAddStudentReceipt(formData);
-      
+      const res: Res = await SubmitAddStudentReceipt(formData);
+
       toast[res.type](res.message);
-      if(res.type !== 'error'){
+      if (res.type !== 'error') {
         ref.current?.reset();
+        setSelectedValues({
+          receiptBook: '',
+        });
       }
     } catch (error) {
       console.error('Failed to add studentReceipt:', error);
       toast.error('ไม่สามารถเพื่มใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
     }
   };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setSelectedValues((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const [selectedValues, setSelectedValues] = useState({
+    receiptBook: '',
+  });
 
   return (
     <form ref={ref} action={async (formData: FormData) => {
@@ -103,7 +115,9 @@ export const StudentReceiptAdd : FC<StudentReceiptAdd> = ({receiptBookOptions}) 
           required
         />
         <div className='w-full'>
-          <Select name='receiptBook'>
+          <Select name='receiptBook'
+            value={selectedValues.receiptBook}
+            onValueChange={(value) => handleSelectChange('receiptBook', value)}>
             <SelectTrigger id="receiptBook">
               <SelectValue placeholder="เลือกเล่มใบเสร็จ" />
             </SelectTrigger>
@@ -122,7 +136,7 @@ export const StudentReceiptAdd : FC<StudentReceiptAdd> = ({receiptBookOptions}) 
   )
 }
 
-export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { studentReceipts: StudentReceipt, receiptBookOptions:{receiptBooks:{id:number,name:string,total_page:number}[]} }) => {
+export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { studentReceipts: StudentReceipt, receiptBookOptions: { receiptBooks: { id: number, name: string, total_page: number }[] } }) => {
   const [editingStudentReceipt, setEditingStudentReceipt] = useState<StudentReceiptData | null>(null);
   const handleEditStudentReceipt = (studentReceipt: StudentReceiptData) => {
     setEditingStudentReceipt(studentReceipt);
@@ -133,9 +147,9 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
       if (!editingStudentReceipt) {
         return toast.error('ไม่สามารถแก้ไขใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
       }
-      
-      const res : Res = await SubmitEditStudentReceipt(editingStudentReceipt);
-      
+
+      const res: Res = await SubmitEditStudentReceipt(editingStudentReceipt);
+
       toast[res.type](res.message);
       setEditingStudentReceipt(null);
     } catch (error) {
@@ -149,21 +163,21 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
       if (!id) {
         return toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
       }
-      const res : Res = await SubmitRemoveStudentReceipt(id);
+      const res: Res = await SubmitRemoveStudentReceipt(id);
       toast[res.type](res.message);
     } catch (error) {
       console.error('Failed to remove studentReceipt:', error);
       toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
     }
   };
-  
+
   return (
     <>
       <TablePagination pagination={studentReceipts.pagination} />
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>นักเรียน</TableHead>
+            <TableHead>รหัสนักเรียน</TableHead>
             <TableHead>จำนวน</TableHead>
             <TableHead>เล่มใบเสร็จ</TableHead>
             <TableHead>สร้างเมื่อ</TableHead>
@@ -216,13 +230,14 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
 
 export const StudentReceiptEdit: FC<StudentReceiptEditProps> = ({ receiptBookOptions, editingStudentReceipt, setEditingStudentReceipt, handleUpdateStudentReceipt }) => {
   if (!editingStudentReceipt) return null;
-  
+
   return (
     <AlertDialog open={!!editingStudentReceipt} onOpenChange={() => setEditingStudentReceipt(null)}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขใบเสร็จนักเรียน</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>รหัสนักเรียน</Label>
         <Input
           type='number'
           value={editingStudentReceipt.studentInClassroom.student_sid}
@@ -234,13 +249,16 @@ export const StudentReceiptEdit: FC<StudentReceiptEditProps> = ({ receiptBookOpt
                 student_sid: Number(e.target.value),
               },
             })
-          }                  
-          />
+          }
+        />
+        <Label>จำนวน</Label>
         <Input
           type='number'
           value={editingStudentReceipt.amount}
           onChange={(e) => setEditingStudentReceipt({ ...editingStudentReceipt, amount: Number(e.target.value) })}
         />
+        <Label>เล่มใบเสร็จ</Label>
+
         <div className="w-full">
           <Select
             defaultValue={

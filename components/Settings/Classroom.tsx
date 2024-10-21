@@ -13,6 +13,7 @@ import { Classroom, ClassroomData } from '@/app/types/Settings/Classrooms'
 import { SubmitAddClassroom, SubmitEditClassroom, SubmitRemoveClassroom } from '@/app/action/settings/Classrooms'
 import { ClassroomOptions } from '@/app/types/classroom'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { Label } from '../ui/label'
 
 interface ClassroomEditProps {
   options: ClassroomOptions;
@@ -61,12 +62,30 @@ interface ClassroomAddProps {
 
 export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
   const ref = useRef<HTMLFormElement>(null);
+
+  const [selectedValues, setSelectedValues] = useState({
+    education_year: '',
+    education_term: '',
+    level: '',
+    room: '',
+  });
+
+  const handleSelectChange = (name: string, value: string) => {
+    setSelectedValues((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddClassroom(formData);
       toast[res.type](res.message);
       if (res.type !== 'error') {
         ref.current?.reset();
+        setSelectedValues({
+          education_year: '',
+          education_term: '',
+          level: '',
+          room: '',
+        });
       }
     } catch (error) {
       console.error('Failed to add room:', error);
@@ -75,12 +94,20 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
   };
 
   return (
-    <form ref={ref} action={async (formData: FormData) => {
-      await handleSubmit(formData)
-    }} method="post">
+    <form
+      ref={ref}
+      action={async (formData: FormData) => {
+        await handleSubmit(formData);
+      }}
+      method="post"
+    >
       <div className="flex space-x-2">
-        <div className='w-full'>
-          <Select name='education_year'>
+        <div className="w-full">
+          <Select
+            name="education_year"
+            value={selectedValues.education_year}
+            onValueChange={(value) => handleSelectChange('education_year', value)}
+          >
             <SelectTrigger id="education_year">
               <SelectValue placeholder="เลือกปีการศึกษา" />
             </SelectTrigger>
@@ -93,8 +120,12 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
             </SelectContent>
           </Select>
         </div>
-        <div className='w-full'>
-          <Select name='education_term'>
+        <div className="w-full">
+          <Select
+            name="education_term"
+            value={selectedValues.education_term}
+            onValueChange={(value) => handleSelectChange('education_term', value)}
+          >
             <SelectTrigger id="education_term">
               <SelectValue placeholder="เลือกภาคเรียน" />
             </SelectTrigger>
@@ -107,8 +138,12 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
             </SelectContent>
           </Select>
         </div>
-        <div className='w-full'>
-          <Select name="level">
+        <div className="w-full">
+          <Select
+            name="level"
+            value={selectedValues.level}
+            onValueChange={(value) => handleSelectChange('level', value)}
+          >
             <SelectTrigger id="level">
               <SelectValue placeholder="เลือกระดับชั้น" />
             </SelectTrigger>
@@ -121,8 +156,12 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
             </SelectContent>
           </Select>
         </div>
-        <div className='w-full'>
-          <Select name="room">
+        <div className="w-full">
+          <Select
+            name="room"
+            value={selectedValues.room}
+            onValueChange={(value) => handleSelectChange('room', value)}
+          >
             <SelectTrigger id="room">
               <SelectValue placeholder="เลือกห้องเรียน" />
             </SelectTrigger>
@@ -138,8 +177,9 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
         <ButtonSubmitFormAddClassroom />
       </div>
     </form>
-  )
-}
+  );
+};
+
 
 export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOptions, classrooms: Classroom }) => {
   const [editingClassroom, setEditingClassroom] = useState<ClassroomData | null>(null);
@@ -148,10 +188,10 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
   };
 
   const handleUpdateClassroom = async () => {
-    try {      
+    try {
       if (!editingClassroom) {
         return toast.error('ไม่สามารถแก้ไขห้องเรียนได้ กรุณาลองอีกครั้ง');
-      }     
+      }
       const res: Res = await SubmitEditClassroom(editingClassroom);
       toast[res.type](res.message);
       setEditingClassroom(null);
@@ -223,7 +263,7 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
             ))
           ) : (
             <TableRow>
-              <TableCell className='text-center' colSpan={4}>ไม่พบห้อง</TableCell>
+              <TableCell className='text-center' colSpan={7}>ไม่พบห้องเรียน</TableCell>
             </TableRow>
           )}
         </TableBody>
@@ -243,6 +283,7 @@ export const ClassroomEdit: FC<ClassroomEditProps> = ({ options, editingClassroo
           <AlertDialogTitle>แก้ไขห้อง</AlertDialogTitle>
         </AlertDialogHeader>
         <div className="w-full">
+          <Label>ปีการศึกษา</Label>
           <Select
             defaultValue={
               options.education_years.find((year) => editingClassroom.education_year.id === year.id)?.id.toString() || ''
@@ -263,6 +304,7 @@ export const ClassroomEdit: FC<ClassroomEditProps> = ({ options, editingClassroo
           </Select>
         </div>
         <div className="w-full">
+          <Label>ภาคเรียน</Label>
           <Select
             defaultValue={
               options.education_terms.find((year) => editingClassroom.education_term.id === year.id)?.id.toString() || ''
@@ -283,6 +325,7 @@ export const ClassroomEdit: FC<ClassroomEditProps> = ({ options, editingClassroo
           </Select>
         </div>
         <div className="w-full">
+          <Label>ระดับชั้น</Label>
           <Select
             defaultValue={
               options.levels.find((year) => editingClassroom.level.id === year.id)?.id.toString() || ''
@@ -303,6 +346,7 @@ export const ClassroomEdit: FC<ClassroomEditProps> = ({ options, editingClassroo
           </Select>
         </div>
         <div className="w-full">
+          <Label>ห้อง</Label>
           <Select
             defaultValue={
               options.rooms.find((room) => editingClassroom.room.id === room.id)?.id.toString() || ''

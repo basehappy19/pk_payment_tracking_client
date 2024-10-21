@@ -1,6 +1,11 @@
-import { BookCopy, BookUser, CircleDollarSign, GraduationCap, ListOrdered, Receipt, SquareStack, University, UsersRound, WalletCards } from "lucide-react";
+import { BookCopy, BookUser, CircleDollarSign, GraduationCap, Home, ListOrdered, Receipt, SquareStack, University, UsersRound, WalletCards } from "lucide-react";
 
 export const sideBarMenu = [
+    {
+        "label":"กลับหน้าหลัก",
+        "path":"/",
+        "icon": <Home />
+    },
     {
         "label":"ปีการศึกษา",
         "path":"/admin/education/years",
@@ -33,7 +38,7 @@ export const sideBarMenu = [
     },
     {
         "label":"นักเรียนในห้องเรียน",
-        "path":"/admin/students/classroom",
+        "path":"/admin/student/classrooms",
         "icon": <BookUser />
     },
     {
@@ -43,7 +48,7 @@ export const sideBarMenu = [
     },
     {
         "label":"ค่าธรรมเนียมของห้องเรียน",
-        "path":"/admin/classrooms/fee",
+        "path":"/admin/fee/classrooms",
         "icon": <WalletCards />
     },
     {

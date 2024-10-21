@@ -11,6 +11,7 @@ import TablePagination from './TablePagination'
 import { Room, RoomData } from '@/app/types/Settings/Rooms'
 import { SubmitAddRoom, SubmitEditRoom, SubmitRemoveRoom } from '@/app/action/settings/Rooms'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface RoomEditProps {
   editingRoom: RoomData | null;
@@ -179,6 +180,9 @@ export const RoomEdit: FC<RoomEditProps> = ({ editingRoom, setEditingRoom, handl
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขห้อง</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>
+          ห้อง
+        </Label>
         <Input
           value={editingRoom.name}
           onChange={(e) => setEditingRoom({ ...editingRoom, name: e.target.value })}

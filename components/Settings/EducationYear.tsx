@@ -11,6 +11,7 @@ import { useFormStatus } from 'react-dom'
 import { useRouter } from 'next/navigation'
 import TablePagination from './TablePagination'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface EducationYearEditProps {
   editingYear: EducationYearData | null;
@@ -179,6 +180,9 @@ export const EducationYearEdit: FC<EducationYearEditProps> = ({ editingYear, set
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขปีการศึกษา</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>
+          ปีการศึกษา
+        </Label>
         <Input
           value={editingYear.name}
           onChange={(e) => setEditingYear({ ...editingYear, name: e.target.value })}

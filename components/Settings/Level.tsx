@@ -11,6 +11,7 @@ import TablePagination from './TablePagination'
 import { Level, LevelData } from '@/app/types/Settings/Levels'
 import { SubmitAddLevel, SubmitEditLevel, SubmitRemoveLevel } from '@/app/action/settings/Levels'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface LevelEditProps {
   editingLevel: LevelData | null;
@@ -179,6 +180,9 @@ export const LevelEdit: FC<LevelEditProps> = ({ editingLevel, setEditingLevel, h
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขระดับชั้น</AlertDialogTitle>
         </AlertDialogHeader>
+        <Label>
+          ระดับชั้น
+        </Label>
         <Input
           value={editingLevel.name}
           onChange={(e) => setEditingLevel({ ...editingLevel, name: e.target.value })}

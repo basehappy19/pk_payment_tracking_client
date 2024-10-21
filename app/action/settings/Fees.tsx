@@ -27,7 +27,7 @@ export async function SubmitAddFee(formData: FormData) {
   }
 
   const res = await AddFee({ amount, name, education_year, education_term });
-  revalidatePath('/admin/education/fees');
+  revalidatePath('/admin/fee/classrooms');
   return res;
 }
 
@@ -55,7 +55,7 @@ export async function SubmitEditFee(fee: FeeData) {
   }
   
   const res = await EditFee(fee)
-  revalidatePath('/admin/fees');
+  revalidatePath('/admin/fee/classrooms');
   return res;
 }
 
@@ -65,6 +65,6 @@ export async function SubmitRemoveFee(id: number) {
   }
   
   const res = await RemoveFee(id)
-  revalidatePath('/admin/fees');
+  revalidatePath('/admin/fee/classrooms');
   return res;
 }

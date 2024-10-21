@@ -1,13 +1,15 @@
 'use server'
 import { authOptions } from "@/app/api/auth/[...nextauth]/auth-options";
-import { FeeForClassroomData } from "@/app/types/Settings/Classrooms";
+import { StudentInClassroomData } from "@/app/types/Settings/Students";
 import { getServerSession } from "next-auth";
 
-export const getFeeForClassrooms = async ({
+export const getStudentInClassrooms = async ({
     search,
+    status,
     page,
   }: {
     search: string | undefined;
+    status: string | undefined;
     page: number | undefined;
   }) => {
     try {
@@ -19,9 +21,10 @@ export const getFeeForClassrooms = async ({
   
       const queryParams = new URLSearchParams();
       if (search) queryParams.set('search', search);
+      if (status) queryParams.set('status', status);
       if (page) queryParams.set('page', page.toString());
   
-      const url = `${process.env.NEXT_PUBLIC_APP_API}/fee/classrooms${
+      const url = `${process.env.NEXT_PUBLIC_APP_API}/student/classrooms${
         queryParams.toString() ? `?${queryParams.toString()}` : ''
       }`;
   
@@ -41,71 +44,70 @@ export const getFeeForClassrooms = async ({
   
       return res.json();
     } catch (e) {
-      console.error('Failed To Fetch FeeForClassrooms: ', e);
+      console.error('Failed To Fetch Student In Classrooms: ', e);
       throw e;
     }
 };
   
-export const AddFeeForClassroom = async ({fee, classroom}:{fee:number, classroom:number}) => {
+export const AddStudentInClassroom = async ({student_sid, classroom, no, pay_status}:{student_sid:number, classroom:number, no:number, pay_status:string}) => {
     try {
         const session = await getServerSession(authOptions);
         
         if(!session){
             return null;
         }
-        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/fee/classroom",{
+        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/student/classroom",{
             method:'POST',
             headers: {
                 'authorization': session.accessToken,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({fee_id:fee, classroom_id:classroom})
+            body: JSON.stringify({student_sid:student_sid, classroom_id:classroom, no:no, pay_status:pay_status})
         })
         if(!res.ok){
             return null;
         }
         return res.json()
     } catch (e) {
-        console.error('Failed To Add FeeForClassroom: ',e);
+        console.error('Failed To Add Student In Classroom: ',e);
         throw e;
     }
 }
 
-export const EditFeeForClassroom = async (FeeForClassroom:FeeForClassroomData) => {
+export const EditStudentInClassroom = async (studentInClassroom:StudentInClassroomData) => {
     try {
         const session = await getServerSession(authOptions);
         
         if(!session){
             return null;
         }
-        
-        const { id, fee, classroom } = FeeForClassroom
-        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/fee/classroom",{
+        const { id, student_sid, classroom, no, pay_status } = studentInClassroom
+        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/student/classroom",{
             method:'PUT',
             headers: {
                 'authorization': session.accessToken,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({id: id, fee_id:fee.id, classroom_id:classroom.id})
+            body: JSON.stringify({id:id, student_sid:student_sid, classroom_id: classroom.id, no:no, pay_status:pay_status})
         })
         if(!res.ok){
             return null;
         }
         return res.json()
     } catch (e) {
-        console.error('Failed To Edit FeeForClassroom: ',e);
+        console.error('Failed To Edit Student In Classroom: ',e);
         throw e;
     }
 }
 
-export const RemoveFeeForClassroom = async (id:number) => {
+export const RemoveStudentInClassroom = async (id:number) => {
     try {
         const session = await getServerSession(authOptions);
         
         if(!session){
             return null;
         }
-        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/fee/classroom",{
+        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/student/classroom",{
             method:'DELETE',
             headers: {
                 'authorization': session.accessToken,
@@ -118,7 +120,7 @@ export const RemoveFeeForClassroom = async (id:number) => {
         }
         return res.json()
     } catch (e) {
-        console.error('Failed To Remove FeeForClassroom: ',e);
+        console.error('Failed To Remove Student In Classroom: ',e);
         throw e;
     }
 }

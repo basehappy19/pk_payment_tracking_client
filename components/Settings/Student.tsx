@@ -11,6 +11,7 @@ import TablePagination from './TablePagination'
 import { Student, StudentData } from '@/app/types/Settings/Students'
 import { SubmitAddStudent, SubmitEditStudent, SubmitRemoveStudent } from '@/app/action/settings/Students'
 import { Res } from '@/app/types/Settings/Response'
+import { Label } from '../ui/label'
 
 interface StudentEditProps {
   editingStudent: StudentData | null;
@@ -195,14 +196,12 @@ export const StudentEdit: FC<StudentEditProps> = ({ editingStudent, setEditingSt
         <AlertDialogHeader>
           <AlertDialogTitle>แก้ไขนักเรียน</AlertDialogTitle>
         </AlertDialogHeader>
-        <Input
-          value={editingStudent.sid}
-          onChange={(e) => setEditingStudent({ ...editingStudent, sid: Number(e.target.value) })}
-        />
+        <Label>เลขบัตรประชาชน</Label>
         <Input
           value={editingStudent.cid}
           onChange={(e) => setEditingStudent({ ...editingStudent, cid: e.target.value })}
         />
+        <Label>ชื่อนักเรียน</Label>
         <Input
           value={editingStudent.name}
           onChange={(e) => setEditingStudent({ ...editingStudent, name: e.target.value })}
