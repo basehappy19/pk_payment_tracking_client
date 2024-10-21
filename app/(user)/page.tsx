@@ -9,7 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
 
   return (
     <main className="flex flex-col min-h-[80vh] mt-8 items-center justify-center rounded-lg mx-auto container bg-slate-600" >
