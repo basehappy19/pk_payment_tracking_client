@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import Navbar from "@/app/layout/Navbar";
 import 'react-toastify/dist/ReactToastify.css';
 import { getUserData } from "@/app/functions/getUserData";
+import Footer from "../layout/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,6 +21,7 @@ export default async function RootLayout({
     <>
         <Navbar session={session} />
         {children}
+        <Footer />
     </>
   );
 }

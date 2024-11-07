@@ -28,7 +28,6 @@ export default async function RootLayout({
             >
               <NextTopLoader color="#f55bce" />
               {children}
-              <Footer />
             </ThemeProvider>
           </UserProvider>
         </Providers>

@@ -1,4 +1,4 @@
-import { BookCopy, BookUser, CircleDollarSign, GraduationCap, Home, ListOrdered, Receipt, SquareStack, University, UsersRound, WalletCards } from "lucide-react";
+import { BookCopy, BookUser, CircleDollarSign, GraduationCap, Home, ListOrdered, Receipt, SquareStack, University, User, UsersRound, WalletCards } from "lucide-react";
 
 export const sideBarMenu = [
     {
@@ -60,5 +60,10 @@ export const sideBarMenu = [
         "label":"ใบเสร็จของนักเรียน",
         "path":"/admin/studentReceipts",
         "icon": <Receipt />
+    },
+    {
+        "label":"ผู้ใช้",
+        "path":"/admin/users",
+        "icon": <User />
     },
 ]
