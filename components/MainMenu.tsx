@@ -12,8 +12,8 @@ const MainMenu = ({ session }: { session: Session | null }) => {
     return (
         <>
             <div className="grid grid-cols-1 w-full gap-4 mx-auto px-4 py-8 max-w-4xl">
-                <h2 className='text-center font-bold text-4xl'>หน้าแรก</h2>
-                <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จ.ชัยภูมิ อ.ภูเขียว ต.ผักปัง ไปรษณีย์:36110</p>
+                <h2 className='text-center font-bold text-4xl'>ยืนดีต้อนรับ</h2>
+                <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จังหวัดชัยภูมิ</p>
                 <div className="relative w-full max-w-4xl mx-auto px-4 py-8 rounded-xl shadow-2xl overflow-hidden dark:shadow-gray-600">
                     <div className="absolute inset-0 bg-[url(/grass-background.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
                     <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -26,7 +26,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Link
                                 href={`${session && session.role === 'student' ? '/fee' : '/auth/student'}`}
-                                className="font-semibold text-lg bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                className={`${session && session.role === 'student' ? 'col-span-full' : ''} font-semibold text-lg bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]`}
                             >
                                 <span><ChecklistIcon /></span>
                                 ตรวจสอบการชำระค่าบำรุงการศึกษา
@@ -85,9 +85,8 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                                 <div className='text-center'>
-                                    <span className='font-medium dark:text-amber-100 text-lg'>ผู้อำนวยการ</span>
-                                    <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
                                     <div className='font-light text-sm dark:text-amber-100'>⟨ ผู้อำนวยการโรงเรียน ⟩</div>
+                                    <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +95,6 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         <div className="p-4 dark:shadow-fuchsia-950 dark:from-fuchsia-600 dark:to-pink-600 bg-gradient-to-r from-fuchsia-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-fuchsia-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <div className='text-center'>
-                                    <span className='font-medium dark:text-pink-100 text-lg'>ผู้ให้ความร่วมมือ</span>
                                     <div className='font-light dark:text-pink-100'>นางสาวปาณิตา อาจวงษ์</div>
                                     <div className='font-light text-sm dark:text-pink-100'>⟨ รองผู้อำนวยการกลุ่มบริหารงบประมาณ ⟩</div>
                                 </div>
@@ -106,7 +104,6 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         <div className="p-4 dark:shadow-fuchsia-950 dark:from-pink-600 dark:to-fuchsia-600 bg-gradient-to-r from-pink-400 to-fuchsia-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-fuchsia-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <div className='text-center'>
-                                    <span className='font-medium dark:text-pink-100 text-lg'>ผู้ให้ความร่วมมือ</span>
                                     <div className='font-light dark:text-pink-100'>นายมงคล ชนะดี</div>
                                     <div className='font-light text-sm dark:text-pink-100'>⟨ ที่ปรึกษา ⟩</div>
                                 </div>

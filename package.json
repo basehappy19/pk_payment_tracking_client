@@ -25,6 +25,7 @@
     "next-auth": "^4.24.8",
     "next-themes": "^0.3.0",
     "nextjs-toploader": "^3.7.15",
+    "puppeteer": "^23.7.1",
     "react": "^18",
     "react-dom": "^18",
     "react-toastify": "^10.0.6",

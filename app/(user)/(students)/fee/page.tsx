@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import type { Metadata } from 'next'
 import NextPrvFees from '@/components/NextPrvFees';
+import ExportVerifyPdf from '@/components/ExportVerifyPdf';
+
 
 export async function generateMetadata(): Promise<Metadata> {
   const status: Status = await CheckFeeStudent({ index: undefined });
@@ -14,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-interface StudentInClassroom {
+export interface StudentInClassroom {
   id: number;
   no: number;
   pay_status: string;
@@ -50,7 +52,6 @@ export interface Status {
   profileImg: string;
   studentInClassroom: StudentInClassroom
   studentInClassrooms: StudentInClassroom[]
-  AllStudentInClassrooms: StudentInClassroom[]
   pagination: StatusPagination
 }
 
@@ -82,7 +83,8 @@ export default async function StudentDashboard({ searchParams }: {
       default:
         return <div className='text-red-500 dark:text-red-800 font-semibold'>ยังไม่ชำระ</div>;
     }
-  };  
+  }; 
+   
   return (
     <div className="container mx-auto p-4 space-y-6">
       <div>
@@ -131,6 +133,35 @@ export default async function StudentDashboard({ searchParams }: {
               ))}
             </TableBody>
           </Table>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>การชำระค่าบำรุงการศึกษา รายปีการศึกษา</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
+                <TableHead>ระดับชั้น/ห้อง</TableHead>
+                <TableHead>จำนวนเงิน</TableHead>
+                <TableHead className="text-right">สถานะการชำระเงิน</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {status.studentInClassrooms.map((studentInClassroom) => (
+                <TableRow key={studentInClassroom.id}>
+                  <TableCell>{studentInClassroom.classroom.education_term.name}/{studentInClassroom.classroom.education_year.name}</TableCell>
+                  <TableCell>{studentInClassroom.classroom.level.name}/{studentInClassroom.classroom.room.name}</TableCell>
+                  <TableCell>{studentInClassroom.total_fee_amount} บาท</TableCell>
+                  <TableCell className="text-right">{getPaymentStatusBadge(studentInClassroom.pay_status)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <ExportVerifyPdf />
         </CardContent>
       </Card>
       <NextPrvFees pagination={status.pagination} />
