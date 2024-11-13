@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Session } from '../types/session';
 import UserProfile from '@/components/UserProfile';
 import { ModeToggle } from '@/components/SwitchThemeMode';
-
+import logo_pk from '@/public/logo_pk.png'
 interface NavbarProps {
   session: Session | null;
 }
@@ -23,7 +23,7 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
-            <Image src="/logo_pk.png" quality={100} width={40} height={40} alt="logo" />
+            <Image src={logo_pk} quality={100} width={40} height={40} alt="logo" />
             <span className="font-semibold text-xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
           </Link>
 

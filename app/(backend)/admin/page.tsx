@@ -1,15 +1,9 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import { ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   title: 'ระบบแอดมินตรวจสอบค่าบำรุงการศึกษา | โรงเรียนภูเขียว',
   description: 'ระบบตรวจสอบค่าบำรุงการศึกษา โรงเรียนภูเขียว',
-=======
-    title: 'ระบบแอดมินตรวจสอบค่าบำรุงการศึกษา | โรงเรียนภูเขียว',
-    description: 'ระบบตรวจสอบค่าบำรุงการศึกษา โรงเรียนภูเขียว',
->>>>>>> UX/UI
 }
 
 export default function page() {

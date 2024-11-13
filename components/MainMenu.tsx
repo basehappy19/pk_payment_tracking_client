@@ -5,7 +5,9 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { LayoutDashboard, LogOut } from 'lucide-react';
 import Image from 'next/image';
-
+import drImg from '../public/cr/dr.png'
+import longuom from '../public/cr/longuom.jpg'
+import mongkon from '../public/cr/mongkon.jpg'
 const MainMenu = ({ session }: { session: Session | null }) => {
     return (
         <>
@@ -81,7 +83,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                     <div className="flex justify-center">
                         <div className="p-4 my-2 dark:shadow-rose-950 dark:from-pink-600 dark:via-rose-600 dark:to-pink-600 bg-gradient-to-r via-rose-400 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
-                                <Image width={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src="./cr/dr.png" />
+                                <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                                 <div className='text-center'>
                                     <span className='font-medium dark:text-amber-100 text-lg'>ผู้อำนวยการ</span>
                                     <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
@@ -98,7 +100,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                     <div className='font-light dark:text-pink-100'>นางสาวปาณิตา อาจวงษ์</div>
                                     <div className='font-light text-sm dark:text-pink-100'>⟨ รองผู้อำนวยการกลุ่มบริหารงบประมาณ ⟩</div>
                                 </div>
-                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src="./cr/longuom.jpg" />
+                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={longuom} />
                             </div>
                         </div>
                         <div className="p-4 dark:shadow-fuchsia-950 dark:from-pink-600 dark:to-fuchsia-600 bg-gradient-to-r from-pink-400 to-fuchsia-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-fuchsia-300 drop-shadow-md">
@@ -108,7 +110,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                     <div className='font-light dark:text-pink-100'>นายมงคล ชนะดี</div>
                                     <div className='font-light text-sm dark:text-pink-100'>⟨ ที่ปรึกษา ⟩</div>
                                 </div>
-                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src="./cr/mongkon.jpg" />
+                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
                             </div>
                         </div>
                     </div>

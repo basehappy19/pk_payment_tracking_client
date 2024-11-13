@@ -1,5 +1,11 @@
 const nextConfig = {
   images: {
+    localPatterns: [
+      {
+        pathname: '/public/**',
+        search: '',
+      },
+    ],
     remotePatterns: [
       {
         protocol: 'http',
