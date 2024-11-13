@@ -7,8 +7,8 @@ import { getFeeForClassrooms } from '@/app/functions/settings/classrooms/Fees';
 import { getFeeOptions } from '@/app/functions/settings/fees/Fees';
  
 export const metadata: Metadata = {
-  title: 'จัดการค่าธรรมเนียมในห้องเรียน | โรงเรียนภูเขียว',
-  description: 'จัดการค่าธรรมเนียมในห้องเรียน โรงเรียนภูเขียว',
+  title: 'จัดการค่าบำรุงการศึกษาในห้องเรียน | โรงเรียนภูเขียว',
+  description: 'จัดการค่าบำรุงการศึกษาในห้องเรียน โรงเรียนภูเขียว',
 }
 
 export default async function ManageFeeForClassroom({searchParams}:{

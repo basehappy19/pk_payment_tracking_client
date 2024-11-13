@@ -3,6 +3,7 @@ export interface Session {
         id?:number,
         username?:string,
         fullname?:string,
+        profileImg?:string,
         sid?:string,
         cid?:string,
         name?:string,

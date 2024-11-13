@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link';
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,10 +17,10 @@ import { Session } from '@/app/types/session';
 import { FC } from 'react';
 
 interface UserProfile {
-  user:Session
+  user: Session
 }
 
-const UserProfile : FC<UserProfile> = ({user}) => {
+const UserProfile: FC<UserProfile> = ({ user }) => {
   const router = useRouter()
   return (
     <div>
@@ -29,6 +29,7 @@ const UserProfile : FC<UserProfile> = ({user}) => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="w-full justify-start gap-2 px-2">
               <Avatar className="w-8 h-8">
+                {user && (user.role === 'student') && <AvatarImage src={`${process.env.NEXT_PUBLIC_STUDENT_PROFILE_IMG}/${user?.data.profileImg}`} />}
                 <AvatarFallback>
                   {user && (user.role === 'user') && user?.data.fullname}
                   {user && (user.role === 'student') && user?.data.name}
@@ -63,7 +64,7 @@ const UserProfile : FC<UserProfile> = ({user}) => {
             {user && (user.role === 'user') && (
               <>
                 <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/fee/students')}>
-                  <span>ค่าธรรมเนียมนักเรียน</span>
+                  <span>ค่าบำรุงการศึกษานักเรียน</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
               </>

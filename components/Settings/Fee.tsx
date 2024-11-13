@@ -25,7 +25,7 @@ interface FeeEditProps {
 export const ButtonSubmitFormAddFee = () => {
   const { pending } = useFormStatus()
   return (
-    <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพิ่มค่าธรรมเนียม"}</Button>
+    <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพิ่มค่าบำรุงการศึกษา"}</Button>
   )
 }
 
@@ -47,7 +47,7 @@ export const SearchFee = () => {
     <div className="mb-4">
       <Input
         type="text"
-        placeholder="ค้นหาค่าธรรมเนียม..."
+        placeholder="ค้นหาค่าบำรุงการศึกษา..."
         value={text}
         onChange={(e) => setText(e.target.value)}
         className="w-full"
@@ -76,7 +76,7 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
       }
     } catch (error) {
       console.error('Failed to add fee:', error);
-      toast.error('ไม่สามารถเพื่มค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
     }
   };
 
@@ -97,7 +97,7 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
         <Input
           type="text"
           name="name"
-          placeholder="ระบุชื่อค่าธรรมเนียมใหม่"
+          placeholder="ระบุชื่อค่าบำรุงการศึกษาใหม่"
           required
         />
         <Input
@@ -154,27 +154,27 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
   const handleUpdateFee = async () => {
     try {
       if (!editingFee) {
-        return toast.error('ไม่สามารถแก้ไขค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
       }
       const res: Res = await SubmitEditFee(editingFee);
       toast[res.type](res.message);
       setEditingFee(null);
     } catch (error) {
       console.error('Failed to edit fee:', error);
-      toast.error('ไม่สามารถแก้ไขค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
     }
   };
 
   const handleRemoveFee = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
       }
       const res: Res = await SubmitRemoveFee(id);
       toast[res.type](res.message);
     } catch (error) {
       console.error('Failed to remove fee:', error);
-      toast.error('ไม่สามารถลบค่าธรรมเนียมได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
     }
   };
 
@@ -227,7 +227,7 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
             ))
           ) : (
             <TableRow>
-              <TableCell className='text-center' colSpan={7}>ไม่พบค่าธรรมเนียม</TableCell>
+              <TableCell className='text-center' colSpan={7}>ไม่พบค่าบำรุงการศึกษา</TableCell>
             </TableRow>
           )}
         </TableBody>
@@ -244,9 +244,9 @@ export const FeeEdit: FC<FeeEditProps> = ({ education_year_options, education_te
     <AlertDialog open={!!editingFee} onOpenChange={() => setEditingFee(null)}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>แก้ไขค่าธรรมเนียม</AlertDialogTitle>
+          <AlertDialogTitle>แก้ไขค่าบำรุงการศึกษา</AlertDialogTitle>
         </AlertDialogHeader>
-        <Label>ค่าธรรมเนียม</Label>
+        <Label>ค่าบำรุงการศึกษา</Label>
         <Input
           value={editingFee.name}
           onChange={(e) => setEditingFee({ ...editingFee, name: e.target.value })}

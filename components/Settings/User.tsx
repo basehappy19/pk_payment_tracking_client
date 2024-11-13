@@ -246,6 +246,18 @@ export const UserEdit: FC<UserEditProps> = ({ roles, editingUser, setEditingUser
           onChange={(e) => setEditingUser({ ...editingUser, username: e.target.value })}
         />
         <Label>
+          รหัสผ่าน
+        </Label>
+        <Input
+          onChange={(e) => setEditingUser({ ...editingUser, password: e.target.value })}
+        />
+        <Label>
+          ยืนยันรหัสผ่าน
+        </Label>
+        <Input
+          onChange={(e) => setEditingUser({ ...editingUser, confirmPassword: e.target.value })}
+        />
+        <Label>
           ชื่อจริง
         </Label>
         <Input
@@ -262,7 +274,7 @@ export const UserEdit: FC<UserEditProps> = ({ roles, editingUser, setEditingUser
             name="role"
           >
             <SelectTrigger id="role">
-              <SelectValue placeholder="เลือกห้อง" />
+              <SelectValue placeholder="เลือกตำแหน่ง" />
             </SelectTrigger>
             <SelectContent>
               {roles.data.map((role) => (

@@ -4,13 +4,19 @@ export interface Student {
     student_sid: number,
     student: {
         name: string,
+        profileImg: string,
     },
+    profileImg: string,
     no: number,
     pay_status: string,
     studentReceipts: StudentReceipts[]
     classroom: {
-        level_id: number,
-        room_id: number,
+        level:  {
+            name: string
+        },
+        room:  {
+            name: string
+        },
         education_year: {
             name: string
         },

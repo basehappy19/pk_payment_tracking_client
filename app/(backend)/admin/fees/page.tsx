@@ -8,8 +8,8 @@ import { getClassroomOptions } from '@/app/functions/classrooms/Classrooms';
 import type { Metadata } from 'next'
  
 export const metadata: Metadata = {
-  title: 'จัดการค่าธรรมเนียม | โรงเรียนภูเขียว',
-  description: 'จัดการค่าธรรมเนียม โรงเรียนภูเขียว',
+  title: 'จัดการค่าบำรุงการศึกษา | โรงเรียนภูเขียว',
+  description: 'จัดการค่าบำรุงการศึกษา โรงเรียนภูเขียว',
 }
 
 export default async function ManageFee({searchParams}:{
@@ -22,7 +22,7 @@ export default async function ManageFee({searchParams}:{
 
     return (
         <div className="p-4 space-y-4">
-            <h1 className="text-2xl font-bold">จัดการค่าธรรมเนียม</h1>
+            <h1 className="text-2xl font-bold">จัดการค่าบำรุงการศึกษา</h1>
 
             <FeeAdd education_year_options={options.education_years} education_term_options={options.education_terms} />
             <SearchFee />

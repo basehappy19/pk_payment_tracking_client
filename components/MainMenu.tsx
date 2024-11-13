@@ -13,7 +13,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
 
             <div className="relative z-10 space-y-8">
                 <h1 className="text-3xl md:text-4xl font-bold text-center text-white">
-                    ระบบตรวจสอบค่าธรรมเนียม
+                    ระบบตรวจสอบค่าบำรุงการศึกษา
                 </h1>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -22,7 +22,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                     >
                         <span><ChecklistIcon /></span>
-                        ตรวจสอบการชำระค่าธรรมเนียม
+                        ตรวจสอบการชำระค่าบำรุงการศึกษา
                         {session && session.role === 'student' && (
                             <div className="text-sm mt-2">{session.data.name}</div>
                         )}
@@ -44,7 +44,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                         >
                             <PigMoneyIcon />
-                            <span>ตรวจสอบการชำระค่าธรรมเนียมรายห้อง</span>
+                            <span>ตรวจสอบการชำระค่าบำรุงการศึกษารายห้อง</span>
                         </Link>
                     )}
 

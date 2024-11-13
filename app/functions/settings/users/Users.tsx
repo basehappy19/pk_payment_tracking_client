@@ -76,7 +76,7 @@ export const AddUser = async ({username, password, fullname, role}:{username: st
         if(!session){
             return null;
         }
-        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/add_user",{
+        const res = await fetch(process.env.NEXT_PUBLIC_APP_API + "/user",{
             method:'POST',
             headers: {
                 'authorization': session.accessToken,

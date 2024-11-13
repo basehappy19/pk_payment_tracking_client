@@ -12,7 +12,6 @@ import { Res } from '@/app/types/Settings/Response'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { StudentInClassroom, StudentInClassroomData } from '@/app/types/Settings/Students'
 import { SubmitAddStudentInClassroom, SubmitEditStudentInClassroom, SubmitRemoveStudentInClassroom } from '@/app/action/settings/StudentInClassrooms'
-import { Badge } from '../ui/badge'
 import { Label } from '../ui/label'
 
 interface StudentInClassroomEditProps {
@@ -287,13 +286,13 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
   const getPaymentStatusBadge = (payStatus: string) => {
     switch (payStatus) {
       case 'done':
-        return <Badge variant="default">ชำระครบเรียบร้อย</Badge>;
+        return <div className='text-green-500 dark:text-green-800 font-semibold'>ชำระครบเรียบร้อย</div>;
       case 'paying':
-        return <Badge variant="secondary">อยู่ระหว่างชำระ</Badge>;
+        return <div className='text-orange-500 dark:text-orange-800 font-semibold'>อยู่ระหว่างชำระ</div>;
       default:
-        return <Badge variant="destructive">ยังไม่ชำระ</Badge>;
+        return <div className='text-red-500 dark:text-red-800 font-semibold'>ยังไม่ชำระ</div>;
     }
-  };
+  };  
 
   return (
     <>
@@ -379,7 +378,7 @@ export const StudentInClassroomEdit: FC<StudentInClassroomEditProps> = ({ classr
     <AlertDialog open={!!editingStudentInClassroom} onOpenChange={() => setEditingStudentInClassroom(null)}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>แก้ไขค่าธรรมเนียม</AlertDialogTitle>
+          <AlertDialogTitle>แก้ไขค่าบำรุงการศึกษา</AlertDialogTitle>
         </AlertDialogHeader>
         <Label>รหัสนักเรียน</Label>
         <Input

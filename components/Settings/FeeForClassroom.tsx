@@ -71,7 +71,7 @@ export const SearchFeeForClassroom = () => {
         <div className="mb-4">
             <Input
                 type="text"
-                placeholder="ค้นหาค่าธรรมเนียมในห้องเรียน..."
+                placeholder="ค้นหาค่าบำรุงการศึกษาในห้องเรียน..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 className="w-full"
@@ -124,7 +124,7 @@ export const FeeForClassroomAdd: FC<FeeForClassroomAddProps> = ({ feeOptions, cl
             }
         } catch (error) {
             console.error('Failed to add feeForClassroom:', error);
-            toast.error('ไม่สามารถเพื่มค่าธรรมเนียมในห้องเรียนได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
         }
     };
 
@@ -148,7 +148,7 @@ export const FeeForClassroomAdd: FC<FeeForClassroomAddProps> = ({ feeOptions, cl
                     onValueChange={(value) => handleSelectChange('fee', value)}
                     >
                         <SelectTrigger id="fee">
-                            <SelectValue placeholder="เลือกค่าธรรมเนียม" />
+                            <SelectValue placeholder="เลือกค่าบำรุงการศึกษา" />
                         </SelectTrigger>
                         <SelectContent>
                             {feeOptions.fees.map((fee) => (
@@ -211,27 +211,27 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
     const handleUpdateFeeForClassroom = async () => {
         try {
             if (!editingFeeForClassroom) {
-                return toast.error('ไม่สามารถแก้ไขค่าธรรมเนียมในห้องเรียนได้ กรุณาลองอีกครั้ง');
+                return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
             }
             const res: Res = await SubmitEditFeeForClassroom(editingFeeForClassroom);
             toast[res.type](res.message);
             setEditingFeeForClassroom(null);
         } catch (error) {
             console.error('Failed to edit fee for classroom:', error);
-            toast.error('ไม่สามารถแก้ไขค่าธรรมเนียมในห้องเรียนได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
         }
     };
 
     const handleRemoveFeeForClassroom = async (id: number) => {
         try {
             if (!id) {
-                return toast.error('ไม่สามารถลบค่าธรรมเนียมในห้องเรียนได้ กรุณาลองอีกครั้ง');
+                return toast.error('ไม่สามารถลบค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
             }
             const res: Res = await SubmitRemoveFeeForClassroom(id);
             toast[res.type](res.message);
         } catch (error) {
             console.error('Failed to remove room:', error);
-            toast.error('ไม่สามารถลบค่าธรรมเนียมในห้องเรียนได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถลบค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
         }
     };
 
@@ -241,7 +241,7 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
             <Table>
                 <TableHeader>
                     <TableRow>
-                        <TableHead>ค่าธรรมเนียม</TableHead>
+                        <TableHead>ค่าบำรุงการศึกษา</TableHead>
                         <TableHead>จำนวน</TableHead>
                         <TableHead>ปีการศึกษา</TableHead>
                         <TableHead>ภาคเรียน</TableHead>
@@ -288,7 +288,7 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                         ))
                     ) : (
                         <TableRow>
-                            <TableCell className='text-center' colSpan={9}>ไม่พบค่าธรรมเนียมในห้อง</TableCell>
+                            <TableCell className='text-center' colSpan={9}>ไม่พบค่าบำรุงการศึกษาในห้อง</TableCell>
                         </TableRow>
                     )}
                 </TableBody>
@@ -305,9 +305,9 @@ export const FeeForClassroomEdit: FC<FeeForClassroomEditProps> = ({ feeOptions, 
         <AlertDialog open={!!editingFeeForClassroom} onOpenChange={() => setEditingFeeForClassroom(null)}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>แก้ไขค่าธรรมเนียมในห้อง</AlertDialogTitle>
+                    <AlertDialogTitle>แก้ไขค่าบำรุงการศึกษาในห้อง</AlertDialogTitle>
                 </AlertDialogHeader>
-                <Label>ค่าธรรมเนียม</Label>
+                <Label>ค่าบำรุงการศึกษา</Label>
                 <div className="w-full">
                     <Select
                         defaultValue={
@@ -325,7 +325,7 @@ export const FeeForClassroomEdit: FC<FeeForClassroomEditProps> = ({ feeOptions, 
                         name="fee"
                     >
                         <SelectTrigger id="fee">
-                            <SelectValue placeholder="เลือกค่าธรรมเนียม" />
+                            <SelectValue placeholder="เลือกค่าบำรุงการศึกษา" />
                         </SelectTrigger>
                         <SelectContent>
                             {feeOptions.fees.map((fee) => (

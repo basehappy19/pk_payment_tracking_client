@@ -5,6 +5,7 @@ export interface UserData {
     username: string,
     fullname:string,
     password?:string
+    confirmPassword?: string
     role: Role
     createdAt:string,
     updatedAt:string,

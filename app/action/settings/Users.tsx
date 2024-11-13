@@ -7,6 +7,7 @@ export async function SubmitAddUser(formData: FormData) {
   const username = formData.get('username') as string;
   const fullname = formData.get('fullname') as string;
   const password = formData.get('password') as string;
+  const confirmPassword = formData.get('confirmPassword') as string;
   const role = Number(formData.get('role') as string);
 
   if (!username) {
@@ -21,6 +22,10 @@ export async function SubmitAddUser(formData: FormData) {
     return { message:"กรุณาระบุรหัสผ่าน", type:"error"};
   }
 
+  if (password !== confirmPassword) {
+    return { message:"กรุณายืนยันรหัสผ่านให้ตรงกัน", type:"error"};
+  }
+
   if (!role) {
     return { message:"กรุณาระบุตำแหน่ง", type:"error"};
   }
@@ -32,7 +37,7 @@ export async function SubmitAddUser(formData: FormData) {
 }
 
 export async function SubmitEditUser(user: UserData) {
-  const { id, username, password, fullname, role } = user
+  const { id, username, password, confirmPassword, fullname, role } = user
   
   if (!id) {
     return { message:"ไม่สามารถแก้ไขผู้ใช้ได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
@@ -46,8 +51,8 @@ export async function SubmitEditUser(user: UserData) {
     return { message:"กรุณาระบุชื่อจริง", type:"error" };
   }
 
-  if (!password) {
-    return { message:"กรุณาระบุรหัสผ่าน", type:"error"};
+  if (password?.trim() && (password?.trim() !== confirmPassword?.trim())) {
+    return { message:"กรุณายืนยันรหัสผ่านให้ตรงกัน", type:"error"};
   }
 
   if (!role) {

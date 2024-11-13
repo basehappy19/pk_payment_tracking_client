@@ -18,7 +18,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { signOut } from 'next-auth/react';
 import { ModeToggle } from '@/components/SwitchThemeMode';
 import { Session } from '../types/session';
@@ -64,6 +64,7 @@ const SidebarContent : FC<SidebarContentProps> = ({user}) => {
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="w-full justify-start gap-2 px-2">
                             <Avatar className="w-8 h-8">
+                                <AvatarImage src={user?.data.profileImg} />
                                 <AvatarFallback>{user?.data.fullname}</AvatarFallback>
                             </Avatar>
                             <div className="flex flex-col items-start">

@@ -11,39 +11,52 @@ interface ClassroomDisplayProps {
     options: ClassroomOptions
 }
 
-const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
-    const [selectedYear, setSelectedYear] = useState<string>("");
-    const [selectedTerm, setSelectedTerm] = useState<string>("");
-    const [selectedLevel, setSelectedLevel] = useState<string>("");
-    const [selectedRoom, setSelectedRoom] = useState<string>("");
+const ClassroomDisplay: FC<ClassroomDisplayProps> = ({ options }) => {
     const [isLoading, setLoading] = useState<boolean>(false);
-    
+
+    type SelectedState = {
+        year: string;
+        term: string;
+        level: string;
+        room: string;
+    };
+
+    const [selected, setSelected] = useState<SelectedState>({
+        year: "",
+        term: "",
+        level: "",
+        room: ""
+    });
+
+    // Trigger loading when all fields are selected
     useEffect(() => {
-        if (selectedYear && selectedTerm && selectedLevel && selectedRoom) {
-            setLoading(true)
-        };
-    }, [selectedYear, selectedTerm, selectedLevel, selectedRoom])
+        if (selected.year && selected.term && selected.level && selected.room) {
+            setLoading(true);
+        }
+    }, [selected]);
 
     return (
-        <main className="container mx-auto p-4">
+        <main className="min-h-screen container mx-auto p-4">
             <Card className="mb-8">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-center">ตรวจสอบค่าธรรมเนียมนักเรียน</CardTitle>
-                    {selectedYear && selectedTerm && selectedLevel && selectedRoom && (
-                       <p className='text-center'>ชั้นมัธยมศึกษาปีที่ {selectedLevel}/{selectedRoom} ปีการศึกษา {selectedYear} เทอม {selectedTerm}</p> 
+                    <CardTitle className="text-2xl font-bold text-center">ตรวจสอบค่าบำรุงการศึกษานักเรียน</CardTitle>
+                    {selected.year && selected.term && selected.level && selected.room && (
+                        <p className='text-center'>
+                            ชั้นมัธยมศึกษาปีที่ {selected.level}/{selected.room} ปีการศึกษา {selected.year} เทอม {selected.term}
+                        </p>
                     )}
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         <div>
                             <Label htmlFor="education_year">ปีการศึกษา</Label>
-                            <Select value={selectedYear} onValueChange={setSelectedYear}>
+                            <Select value={selected.year} onValueChange={(value) => setSelected((prev) => ({ ...prev, year: value }))}>
                                 <SelectTrigger id="education_year">
                                     <SelectValue placeholder="เลือกปีการศึกษา" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {options.education_years.map((year) => (
-                                        <SelectItem key={year.id} value={year.id.toString()}>
+                                        <SelectItem key={year.id} value={year.name.toString()}>
                                             {year.name}
                                         </SelectItem>
                                     ))}
@@ -52,13 +65,13 @@ const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
                         </div>
                         <div>
                             <Label htmlFor="education_term">ภาคเรียน</Label>
-                            <Select value={selectedTerm} onValueChange={setSelectedTerm}>
+                            <Select value={selected.term} onValueChange={(value) => setSelected((prev) => ({ ...prev, term: value }))}>
                                 <SelectTrigger id="education_term">
                                     <SelectValue placeholder="เลือกภาคเรียน" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {options.education_terms.map((term) => (
-                                        <SelectItem key={term.id} value={term.id.toString()}>
+                                        <SelectItem key={term.id} value={term.name.toString()}>
                                             {term.name}
                                         </SelectItem>
                                     ))}
@@ -67,13 +80,13 @@ const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
                         </div>
                         <div>
                             <Label htmlFor="level">ระดับชั้น</Label>
-                            <Select value={selectedLevel} onValueChange={setSelectedLevel}>
+                            <Select value={selected.level} onValueChange={(value) => setSelected((prev) => ({ ...prev, level: value }))}>
                                 <SelectTrigger id="level">
                                     <SelectValue placeholder="เลือกระดับชั้น" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {options.levels.map((level) => (
-                                        <SelectItem key={level.id} value={level.id.toString()}>
+                                        <SelectItem key={level.id} value={level.name.toString()}>
                                             {level.name}
                                         </SelectItem>
                                     ))}
@@ -82,13 +95,13 @@ const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
                         </div>
                         <div>
                             <Label htmlFor="room">ห้องเรียน</Label>
-                            <Select value={selectedRoom} onValueChange={setSelectedRoom}>
+                            <Select value={selected.room} onValueChange={(value) => setSelected((prev) => ({ ...prev, room: value }))}>
                                 <SelectTrigger id="room">
                                     <SelectValue placeholder="เลือกห้องเรียน" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {options.rooms.map((room) => (
-                                        <SelectItem key={room.id} value={room.id.toString()}>
+                                        <SelectItem key={room.id} value={room.name.toString()}>
                                             {room.name}
                                         </SelectItem>
                                     ))}
@@ -99,12 +112,18 @@ const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
                 </CardContent>
             </Card>
             {!isLoading ? (
-                <StudentFeeInClassrooms onLoading={setLoading} year={selectedYear} term={selectedTerm} level={selectedLevel} room={selectedRoom} />
-            ):(
+                <StudentFeeInClassrooms 
+                    onLoading={setLoading} 
+                    year={selected.year} 
+                    term={selected.term} 
+                    level={selected.level} 
+                    room={selected.room} 
+                />
+            ) : (
                 <Loading />
             )}
         </main>
     );
 };
 
-export default ClassroomDisplay
+export default ClassroomDisplay;

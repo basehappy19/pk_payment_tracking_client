@@ -3,8 +3,8 @@ import MainMenu from "@/components/MainMenu";
 import { getUserData } from '../functions/getUserData';
 
 export const metadata: Metadata = {
-  title: 'ระบบตรวจสอบค่าธรรมเนียม | โรงเรียนภูเขียว',
-  description: 'ระบบตรวจสอบค่าธรรมเนียม โรงเรียนภูเขียว',
+  title: 'ระบบตรวจสอบค่าบำรุงการศึกษา | โรงเรียนภูเขียว',
+  description: 'ระบบตรวจสอบค่าบำรุงการศึกษา โรงเรียนภูเขียว',
 }
 
 export default async function Home() {

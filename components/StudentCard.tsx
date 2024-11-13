@@ -1,22 +1,22 @@
 'use client'
 import React, { FC, useState } from 'react';
-import { User, ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Student } from '@/app/types/Students';
 import { useUser } from '@/app/contexts/User';
+import Image from 'next/image';
 
 const getPaymentStatusBadge = (payStatus: string) => {
     switch (payStatus) {
-        case 'done':
-            return <Badge variant="default">ชำระครบเรียบร้อย</Badge>;
-        case 'paying':
-            return <Badge variant="secondary">อยู่ระหว่างชำระ</Badge>;
-        default:
-            return <Badge variant="destructive">ยังไม่ชำระ</Badge>;
+      case 'done':
+        return <div className='text-green-500 dark:text-green-800 font-semibold'>ชำระครบเรียบร้อย</div>;
+      case 'paying':
+        return <div className='text-orange-500 dark:text-orange-800 font-semibold'>อยู่ระหว่างชำระ</div>;
+      default:
+        return <div className='text-red-500 dark:text-red-800 font-semibold'>ยังไม่ชำระ</div>;
     }
-};
+  };  
 interface StudentCardProps {
     student: Student
 }
@@ -24,11 +24,12 @@ interface StudentCardProps {
 const StudentCard: FC<StudentCardProps> = ({ student }) => {
     const [isReceiptsOpen, setIsReceiptsOpen] = useState<boolean>(false);
     const user = useUser();
+    
     return (
         <Card className="w-full max-w-md mx-auto">
             <CardContent className="p-6">
                 <div className="flex items-center mb-4">
-                    <User className="w-12 h-12 text-gray-400 mr-4" />
+                    <Image quality={90} width={48} height={48} src={`${process.env.NEXT_PUBLIC_STUDENT_PROFILE_IMG}/${student.student.profileImg}`} alt={student.student_sid.toString()} className="rounded-md mr-4" />
                     <div>
                         <p className="font-semibold text-md">{student.student.name}</p>
                         <p className="text-sm text-gray-500">รหัสนักเรียน: {student.student_sid.toString()}</p>
