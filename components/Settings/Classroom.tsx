@@ -220,10 +220,8 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>ปีการศึกษา</TableHead>
-            <TableHead>ภาคเรียน</TableHead>
-            <TableHead>ระดับชั้น</TableHead>
-            <TableHead>ห้อง</TableHead>
+            <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
+            <TableHead>ระดับชั้น/ห้อง</TableHead>
             <TableHead>สร้างเมื่อ</TableHead>
             <TableHead>อัพเดทเมื่อ</TableHead>
             <TableHead>จัดการ</TableHead>
@@ -233,10 +231,8 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
           {classrooms.data && classrooms.data.length > 0 ? (
             classrooms.data.map((classroom) => (
               <TableRow key={classroom.id}>
-                <TableCell>{classroom.education_year.name}</TableCell>
-                <TableCell>{classroom.education_term.name}</TableCell>
-                <TableCell>{classroom.level.name}</TableCell>
-                <TableCell>{classroom.room.name}</TableCell>
+                <TableCell>{classroom.education_term.name}/{classroom.education_year.name}</TableCell>
+                <TableCell>{classroom.level.name}/{classroom.room.name}</TableCell>
                 <TableCell>{new Date(classroom.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(classroom.updatedAt).toLocaleString()}</TableCell>
                 <TableCell>

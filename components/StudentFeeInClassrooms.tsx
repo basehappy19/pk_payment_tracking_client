@@ -111,7 +111,11 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                             <React.Fragment>
                                 <Separator className="my-4" />
                                 <div className="flex justify-between items-center font-semibold text-lg">
+<<<<<<< HEAD
                                     <span>จำนวนนักเรียน {studentFeeInClassroom.classroom.total_students} คน รวมเป็นทั้งสิ้น</span>
+=======
+                                    <span>รวมค่าบำรุงการศึกษาทั้งหมด {studentFeeInClassroom.classroom.total_students} คน</span>
+>>>>>>> UX/UI
                                     <span>{studentFeeInClassroom.classroom.total_fee_for_all_students} บาท</span>
                                 </div>
                                 <Separator className="my-4" />

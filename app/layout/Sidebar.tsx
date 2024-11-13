@@ -27,7 +27,7 @@ interface SideBarProps {
     session: Session | null
 }
 
-const Sidebar : FC<SideBarProps> = ({session}) => {
+const Sidebar: FC<SideBarProps> = ({ session }) => {
     const [open, setOpen] = useState(false);
 
     return (
@@ -54,57 +54,59 @@ interface SidebarContentProps {
     user: Session | null
 }
 
-const SidebarContent : FC<SidebarContentProps> = ({user}) => {
+const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
     const pathname = usePathname()
 
     return (
         <div className="min-h-full bg-background flex flex-col">
-            <div className="p-4 border-b dark:border-slate-700">
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="w-full justify-start gap-2 px-2">
-                            <Avatar className="w-8 h-8">
-                                <AvatarImage src={user?.data.profileImg} />
-                                <AvatarFallback>{user?.data.fullname}</AvatarFallback>
-                            </Avatar>
-                            <div className="flex flex-col items-start">
-                                <span className="font-medium text-sm">{user?.data.fullname}</span>
-                                <span className="text-xs text-muted-foreground">{user?.data.role?.name}</span>
-                            </div>
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56" align="start" forceMount>
-                        <DropdownMenuItem className='cursor-pointer' onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
-                            <LogOut className="mr-2 h-4 w-4" />
-                            <span>ออกจากระบบ</span>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </div>
-            <div className="p-4">
-                <h2 className="text-lg font-semibold">จัดการระบบ</h2>
-                <div className="mt-2">
-                    <ModeToggle />
-                </div>
-            </div>
-            <nav className="flex-1 px-3 py-2 space-y-1">
-                {sideBarMenu.map((menu, index) => (
-                    <div className='border-b border-slate-300 py-2' key={index}>
-                        <Link href={menu.path}>
-                            <Button
-                                variant="ghost"
-                                className={cn(
-                                    "w-full justify-start gap-2",
-                                    pathname === menu.path && "bg-muted"
-                                )}
-                            >
-                                {menu.icon}
-                                {menu.label}
+            <div className="bg-gradient-to-t  from-rose-300 to-fuchsia-300">
+                <div className="p-4 border-b dark:border-slate-700">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="w-full justify-start gap-2 px-2">
+                                <Avatar className="w-8 h-8">
+                                    <AvatarImage src={user?.data.profileImg} />
+                                    <AvatarFallback>{user?.data.fullname}</AvatarFallback>
+                                </Avatar>
+                                <div className="flex flex-col items-start">
+                                    <span className="font-medium text-sm">{user?.data.fullname}</span>
+                                    <span className="text-xs text-muted-foreground">{user?.data.role?.name}</span>
+                                </div>
                             </Button>
-                        </Link>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent className="w-56" align="start" forceMount>
+                            <DropdownMenuItem className='cursor-pointer' onClick={() => signOut({ callbackUrl: '/', redirect: true })}>
+                                <LogOut className="mr-2 h-4 w-4" />
+                                <span>ออกจากระบบ</span>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
+                <div className="p-4">
+                    <h2 className="text-lg font-semibold">จัดการระบบ</h2>
+                    <div className="mt-2">
+                        <ModeToggle />
                     </div>
-                ))}
-            </nav>
+                </div>
+                <nav className="flex-1 px-3 py-2 space-y-1">
+                    {sideBarMenu.map((menu, index) => (
+                        <div className='border-b border-slate-300 py-2' key={index}>
+                            <Link href={menu.path}>
+                                <Button
+                                    variant="ghost"
+                                    className={cn(
+                                        "w-full justify-start gap-2 bg-white text-gray-800 rounded-md",
+                                        pathname === menu.path && "bg-muted"
+                                    )}
+                                >
+                                    {menu.icon}
+                                    {menu.label}
+                                </Button>
+                            </Link>
+                        </div>
+                    ))}
+                </nav>
+            </div>
         </div>
     )
 }

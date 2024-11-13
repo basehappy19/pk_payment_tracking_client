@@ -186,8 +186,7 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
           <TableRow>
             <TableHead>ชื่อ</TableHead>
             <TableHead>จำนวนเงิน</TableHead>
-            <TableHead>ปีการศึกษา</TableHead>
-            <TableHead>ภาคเรียนที่</TableHead>
+            <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
             <TableHead>สร้างเมื่อ</TableHead>
             <TableHead>อัพเดทเมื่อ</TableHead>
             <TableHead>จัดการ</TableHead>
@@ -199,8 +198,7 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
               <TableRow key={fee.id}>
                 <TableCell>{fee.name}</TableCell>
                 <TableCell>{fee.amount}</TableCell>
-                <TableCell>{fee.education_year.name}</TableCell>
-                <TableCell>{fee.education_term.name}</TableCell>
+                <TableCell>{fee.education_term.name}/{fee.education_year.name}</TableCell>
                 <TableCell>{new Date(fee.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(fee.updatedAt).toLocaleString()}</TableCell>
                 <TableCell>

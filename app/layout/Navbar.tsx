@@ -19,7 +19,7 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#1c1b1e] text-black dark:text-white shadow-md">
+    <div className="bg-gradient-to-r dark:from-[#1c1b1e] dark:to-zinc-800 from-red-200 to-pink-300 text-black dark:text-white dark:shadow-none ">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">

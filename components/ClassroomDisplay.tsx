@@ -28,7 +28,6 @@ const ClassroomDisplay: FC<ClassroomDisplayProps> = ({ options }) => {
         room: ""
     });
 
-    // Trigger loading when all fields are selected
     useEffect(() => {
         if (selected.year && selected.term && selected.level && selected.room) {
             setLoading(true);

@@ -301,10 +301,8 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
         <TableHeader>
           <TableRow>
             <TableHead>รหัสนักเรียน</TableHead>
-            <TableHead>ปีการศึกษา</TableHead>
-            <TableHead>ภาคเรียนที่</TableHead>
-            <TableHead>ระดับชั้น</TableHead>
-            <TableHead>ห้อง</TableHead>
+            <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
+            <TableHead>ระดับชั้น/ห้อง</TableHead>
             <TableHead>เลขที่</TableHead>
             <TableHead>สถานะการชำระ</TableHead>
             <TableHead>สร้างเมื่อ</TableHead>
@@ -317,10 +315,8 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
             studentInclassrooms.data.map((studentInclassroom) => (
               <TableRow key={studentInclassroom.id}>
                 <TableCell>{studentInclassroom.student_sid}</TableCell>
-                <TableCell>{studentInclassroom.classroom.education_year.name}</TableCell>
-                <TableCell>{studentInclassroom.classroom.education_term.name}</TableCell>
-                <TableCell>{studentInclassroom.classroom.level.name}</TableCell>
-                <TableCell>{studentInclassroom.classroom.room.name}</TableCell>
+                <TableCell>{studentInclassroom.classroom.education_term.name}/{studentInclassroom.classroom.education_year.name}</TableCell>
+                <TableCell>{studentInclassroom.classroom.level.name}/{studentInclassroom.classroom.room.name}</TableCell>
                 <TableCell>{studentInclassroom.no}</TableCell>
                 <TableCell>{getPaymentStatusBadge(studentInclassroom.pay_status)}</TableCell>
                 <TableCell>{new Date(studentInclassroom.createdAt).toLocaleString()}</TableCell>

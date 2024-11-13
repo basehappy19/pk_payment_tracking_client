@@ -243,10 +243,8 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                     <TableRow>
                         <TableHead>ค่าบำรุงการศึกษา</TableHead>
                         <TableHead>จำนวน</TableHead>
-                        <TableHead>ปีการศึกษา</TableHead>
-                        <TableHead>ภาคเรียน</TableHead>
-                        <TableHead>ระดับชั้น</TableHead>
-                        <TableHead>ห้อง</TableHead>
+                        <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
+                        <TableHead>ระดับชั้น/ห้อง</TableHead>
                         <TableHead>สร้างเมื่อ</TableHead>
                         <TableHead>อัพเดทเมื่อ</TableHead>
                         <TableHead>จัดการ</TableHead>
@@ -258,10 +256,8 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                             <TableRow key={feeForClassroom.id}>
                                 <TableCell>{feeForClassroom.fee.name}</TableCell>
                                 <TableCell>{feeForClassroom.fee.amount}</TableCell>
-                                <TableCell>{feeForClassroom.classroom.education_year.name}</TableCell>
-                                <TableCell>{feeForClassroom.classroom.education_term.name}</TableCell>
-                                <TableCell>{feeForClassroom.classroom.level.name}</TableCell>
-                                <TableCell>{feeForClassroom.classroom.room.name}</TableCell>
+                                <TableCell>{feeForClassroom.classroom.education_term.name}/{feeForClassroom.classroom.education_year.name}</TableCell>
+                                <TableCell>{feeForClassroom.classroom.level.name}/{feeForClassroom.classroom.room.name}</TableCell>
                                 <TableCell>{new Date(feeForClassroom.createdAt).toLocaleString()}</TableCell>
                                 <TableCell>{new Date(feeForClassroom.updatedAt).toLocaleString()}</TableCell>
                                 <TableCell>
