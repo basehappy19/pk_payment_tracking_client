@@ -137,11 +137,11 @@ export const ListLevels = ({ levels }: { levels: Level }) => {
                 <TableCell>{level.name}</TableCell>
                 <TableCell>{new Date(level.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(level.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditLevel(level)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditLevel(level)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>

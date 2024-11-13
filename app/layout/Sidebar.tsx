@@ -59,8 +59,8 @@ const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
 
     return (
         <div className="min-h-full bg-background flex flex-col">
-            <div className="bg-gradient-to-t  from-rose-300 to-fuchsia-300">
-                <div className="p-4 border-b dark:border-slate-700">
+            <div className="bg-gradient-to-t dark:from-pink-900 dark:via-stone-900 dark:to-stone-950 from-rose-100 to-fuchsia-200">
+                <div className="p-4 border-b border-white dark:border-stone-700">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="ghost" className="w-full justify-start gap-2 px-2">
@@ -70,7 +70,7 @@ const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
                                 </Avatar>
                                 <div className="flex flex-col items-start">
                                     <span className="font-medium text-sm">{user?.data.fullname}</span>
-                                    <span className="text-xs text-muted-foreground">{user?.data.role?.name}</span>
+                                    <span className="text-xs text-muted-foreground dark:text-stone-300">{user?.data.role?.name}</span>
                                 </div>
                             </Button>
                         </DropdownMenuTrigger>
@@ -90,13 +90,13 @@ const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
                 </div>
                 <nav className="flex-1 px-3 py-2 space-y-1">
                     {sideBarMenu.map((menu, index) => (
-                        <div className='border-b border-slate-300 py-2' key={index}>
+                        <div className='border-b border-neutral-400 py-2' key={index}>
                             <Link href={menu.path}>
                                 <Button
                                     variant="ghost"
                                     className={cn(
-                                        "w-full justify-start gap-2 bg-white text-gray-800 rounded-md",
-                                        pathname === menu.path && "bg-muted"
+                                        "w-full justify-start gap-2 hover:text-amber-700 hover:bg-yellow-100/60 bg-white dark:hover:text-gray-800/90 dark:hover:bg-cyan-100/60 dark:text-gray-200 dark:bg-neutral-700 text-gray-800/90 rounded-md",
+                                        pathname === menu.path && "bg-neutral-700 text-gray-200 dark:text-gray-800 dark:bg-gray-50"
                                     )}
                                 >
                                     {menu.icon}

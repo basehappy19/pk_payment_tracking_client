@@ -195,11 +195,11 @@ export const ListUsers = ({ users, roles }: { users: User, roles: { data: { id: 
                 <TableCell>{user.role.name}</TableCell>
                 <TableCell>{new Date(user.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(user.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditUser(user)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditUser(user)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>

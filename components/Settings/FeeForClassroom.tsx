@@ -260,11 +260,11 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                                 <TableCell>{feeForClassroom.classroom.level.name}/{feeForClassroom.classroom.room.name}</TableCell>
                                 <TableCell>{new Date(feeForClassroom.createdAt).toLocaleString()}</TableCell>
                                 <TableCell>{new Date(feeForClassroom.updatedAt).toLocaleString()}</TableCell>
-                                <TableCell>
-                                    <Button variant="outline" className="mr-2" onClick={() => handleEditFeeForClassroom(feeForClassroom)}>แก้ไข</Button>
+                                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                                    <Button variant="outline" className="w-full" onClick={() => handleEditFeeForClassroom(feeForClassroom)}>แก้ไข</Button>
                                     <AlertDialog>
                                         <AlertDialogTrigger asChild>
-                                            <Button variant="destructive">ลบ</Button>
+                                            <Button className='w-full' variant="destructive">ลบ</Button>
                                         </AlertDialogTrigger>
                                         <AlertDialogContent>
                                             <AlertDialogHeader>

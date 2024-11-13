@@ -137,11 +137,11 @@ export const ListEducationYears = ({ years }: { years: EducationYear }) => {
                 <TableCell>{year.name}</TableCell>
                 <TableCell>{new Date(year.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(year.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditYear(year)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditYear(year)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>

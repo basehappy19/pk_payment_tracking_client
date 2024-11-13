@@ -153,11 +153,11 @@ export const ListStudents = ({ students }: { students: Student }) => {
                 <TableCell>{student.cid}</TableCell>
                 <TableCell>{new Date(student.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(student.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditStudent(student)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditStudent(student)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
