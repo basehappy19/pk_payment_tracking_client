@@ -35,7 +35,7 @@ export async function SubmitEditStudentInClassroom(studentInclassroom: StudentIn
   const { id, student_sid, classroom, no, pay_status } = studentInclassroom
 
   if (!id) {
-    return { message:"ไม่สามารถแก้ไขค่าธรรมเนียมได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
+    return { message:"ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
   }
 
   if (!student_sid) {

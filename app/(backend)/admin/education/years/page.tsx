@@ -16,6 +16,7 @@ export default async function ManageEducationYear({searchParams}:{
     const search = typeof searchParams.search === 'string' ? searchParams.search : undefined;    
     const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : undefined;    
     const years : EducationYear = await getEducationYears({search:search,page:page})
+    
     return (
         <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">จัดการปีการศึกษา</h1>

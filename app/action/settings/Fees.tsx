@@ -15,7 +15,7 @@ export async function SubmitAddFee(formData: FormData) {
   }
 
   if (!name || name.trim() === '') {
-    return { message:"กรุณาระบุชื่อค่าธรรมเนียม",type:"error" };
+    return { message:"กรุณาระบุชื่อค่าบำรุงการศึกษา",type:"error" };
   }
 
   if (!education_year) {
@@ -35,7 +35,7 @@ export async function SubmitEditFee(fee: FeeData) {
   const { id, amount, name, education_year, education_term } = fee
 
   if (!id) {
-    return { message:"ไม่สามารถแก้ไขค่าธรรมเนียมได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
+    return { message:"ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
   }
 
   if (!amount) {
@@ -43,7 +43,7 @@ export async function SubmitEditFee(fee: FeeData) {
   }
 
   if (!name || name.trim() === '') {
-    return { message:"กรุณาระบุชื่อค่าธรรมเนียม",type:"error" };
+    return { message:"กรุณาระบุชื่อค่าบำรุงการศึกษา",type:"error" };
   }
 
   if (!education_year) {
@@ -61,7 +61,7 @@ export async function SubmitEditFee(fee: FeeData) {
 
 export async function SubmitRemoveFee(id: number) {
   if (!id) {
-    return { message:"ไม่สามารถลบค่าธรรมเนียมได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
+    return { message:"ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองใหม่อีกครั้ง",type:"error" };
   }
   
   const res = await RemoveFee(id)

@@ -31,7 +31,7 @@ export default function CardLoginStudent() {
         <main className="flex justify-center items-center min-h-[80vh]">
             <Card className="w-full md:w-1/2">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-medium text-center">ตรวจค่าธรรมเนียมนักเรียน</CardTitle>
+                    <CardTitle className="text-2xl font-medium text-center">ตรวจค่าบำรุงการศึกษานักเรียน</CardTitle>
                     <CardDescription className="text-center">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</CardDescription>
                 </CardHeader>
                 <CardContent>

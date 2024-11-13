@@ -9,8 +9,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const status: Status = await CheckFeeStudent();
  
   return {
-    title: `ค่าธรรมเนียมของ ${status.name} | โรงเรียนภูเขียว`,
-    description: 'ระบบตรวจสอบค่าธรรมเนียม โรงเรียนภูเขียว',
+    title: `ค่าบำรุงการศึกษาของ ${status.name} | โรงเรียนภูเขียว`,
+    description: 'ระบบตรวจสอบค่าบำรุงการศึกษา โรงเรียนภูเขียว',
   }
 }
 
@@ -57,7 +57,7 @@ export default async function StudentDashboard() {
 
   return (
     <div className="container mx-auto p-4 space-y-6">
-      <h1 className="text-3xl font-bold">ตรวจสอบการชำระค่าธรรมเนียม</h1>
+      <h1 className="text-3xl font-bold">ตรวจสอบการชำระค่าบำรุงการศึกษา</h1>
 
       <Card>
         <CardHeader>
@@ -66,7 +66,7 @@ export default async function StudentDashboard() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <h3 className="text-xl font-semibold mb-2">ยอดค่าธรรมเนียมทั้งหมด</h3>
+              <h3 className="text-xl font-semibold mb-2">ยอดค่าบำรุงการศึกษาทั้งหมด</h3>
               <p className="text-3xl font-bold text-blue-500">{status.total_fee_amount.toString()} บาท</p>
               <p className="text-sm text-muted-foreground mt-2">
                 ประจำปีการศึกษา {status.studentInClassroom[0].classroom.education_year.name} เทอม {status.studentInClassroom[0].classroom.education_term.name}

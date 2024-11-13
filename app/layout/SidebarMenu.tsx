@@ -42,12 +42,12 @@ export const sideBarMenu = [
         "icon": <BookUser />
     },
     {
-        "label":"ค่าธรรมเนียม",
+        "label":"ค่าบำรุงการศึกษา",
         "path":"/admin/fees",
         "icon": <CircleDollarSign />
     },
     {
-        "label":"ค่าธรรมเนียมของห้องเรียน",
+        "label":"ค่าบำรุงการศึกษาของห้องเรียน",
         "path":"/admin/fee/classrooms",
         "icon": <WalletCards />
     },

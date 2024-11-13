@@ -79,7 +79,7 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
             {studentFeeInClassroom.students.length > 0 && (
                 <Card className='mb-8'>
                     <CardHeader>
-                        <CardTitle className="text-xl font-semibold">ค่าธรรมเนียมทั้งหมด</CardTitle>
+                        <CardTitle className="text-xl font-semibold">ค่าบำรุงการศึกษาทั้งหมด</CardTitle>
                     </CardHeader>
                     <CardContent>
                         {studentFeeInClassroom.classroom.fees.length > 0 ? (
@@ -95,18 +95,18 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                                 ))}
                             </ScrollArea>
                         ) : (
-                            <div className='w-full flex justify-center'>ไม่มีข้อมูลค่าธรรมเนียม</div>
+                            <div className='w-full flex justify-center'>ไม่มีข้อมูลค่าบำรุงการศึกษา</div>
                         )}
                         <Separator className="my-4" />
                         <div className="flex justify-between items-center font-semibold text-lg">
-                            <span>รวมค่าธรรมเนียมทั้งหมด</span>
+                            <span>รวมค่าบำรุงการศึกษาทั้งหมด</span>
                             <span>{studentFeeInClassroom.classroom.total_fee_amount} บาท</span>
                         </div>
                         {user && (user?.data.role?.id == 2 || user?.data.role?.id == 3) && (
                             <React.Fragment>
                                 <Separator className="my-4" />
                                 <div className="flex justify-between items-center font-semibold text-lg">
-                                    <span>รวมค่าธรรมเนียมทั้งหมด {studentFeeInClassroom.classroom.total_students} คน</span>
+                                    <span>รวมค่าบำรุงการศึกษาทั้งหมด {studentFeeInClassroom.classroom.total_students} คน</span>
                                     <span>{studentFeeInClassroom.classroom.total_fee_for_all_students} บาท</span>
                                 </div>
                                 <Separator className="my-4" />

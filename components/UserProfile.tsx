@@ -63,7 +63,7 @@ const UserProfile : FC<UserProfile> = ({user}) => {
             {user && (user.role === 'user') && (
               <>
                 <DropdownMenuItem className="cursor-pointer" onClick={() => router.push('/fee/students')}>
-                  <span>ค่าธรรมเนียมนักเรียน</span>
+                  <span>ค่าบำรุงการศึกษานักเรียน</span>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
               </>

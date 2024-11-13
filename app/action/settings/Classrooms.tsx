@@ -77,7 +77,7 @@ export async function SubmitAddFeeForClassroom(formData: FormData) {
   const classroom = Number(formData.get('classroom')) as number;
 
   if (!fee) {
-    return { message:"กรุณาเลือกค่าธรรมเนียม",type:"error" };
+    return { message:"กรุณาเลือกค่าบำรุงการศึกษา",type:"error" };
   }
 
   if (!classroom) {
@@ -98,7 +98,7 @@ export async function SubmitEditFeeForClassroom(feeForClassroom: FeeForClassroom
   }
 
   if (!fee) {
-    return { message:"กรุณาเลือกค่าธรรมเนียม",type:"error" };
+    return { message:"กรุณาเลือกค่าบำรุงการศึกษา",type:"error" };
   }
 
   if (!classroom) {

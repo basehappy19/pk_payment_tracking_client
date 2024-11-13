@@ -19,7 +19,7 @@ export default async function ManageClassroom({searchParams}:{
     const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : undefined;    
     const classrooms : Classroom = await getClassrooms({search:search,page:page})
     const options : ClassroomOptions = await getClassroomOptions();
-
+    
     return (
         <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">จัดการห้องเรียน</h1>

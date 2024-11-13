@@ -28,7 +28,7 @@ const ClassroomDisplay : FC<ClassroomDisplayProps> = ({ options }) => {
         <main className="container mx-auto p-4">
             <Card className="mb-8">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-center">ตรวจสอบค่าธรรมเนียมนักเรียน</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-center">ตรวจสอบค่าบำรุงการศึกษานักเรียน</CardTitle>
                     {selectedYear && selectedTerm && selectedLevel && selectedRoom && (
                        <p className='text-center'>ชั้นมัธยมศึกษาปีที่ {selectedLevel}/{selectedRoom} ปีการศึกษา {selectedYear} เทอม {selectedTerm}</p> 
                     )}
