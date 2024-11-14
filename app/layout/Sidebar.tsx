@@ -43,7 +43,7 @@ const Sidebar: FC<SideBarProps> = ({ session }) => {
                 </SheetContent>
             </Sheet>
 
-            <div className="hidden md:flex h-screen w-64 flex-col fixed left-0 top-0 bottom-0 dark:border-r dark:border-slate-300 overflow-y-auto">
+            <div className="hidden z-50 md:flex h-screen w-64 flex-col fixed left-0 top-0 bottom-0 dark:border-r dark:border-slate-300 overflow-y-auto">
                 <SidebarContent user={session} />
             </div>
         </>
