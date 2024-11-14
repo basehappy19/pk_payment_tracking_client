@@ -43,7 +43,7 @@ const Sidebar: FC<SideBarProps> = ({ session }) => {
                 </SheetContent>
             </Sheet>
 
-            <div className="hidden md:flex h-screen w-64 flex-col fixed left-0 top-0 bottom-0 dark:border-r dark:border-slate-300 overflow-y-auto">
+            <div className="hidden z-50 md:flex h-screen w-64 flex-col fixed left-0 top-0 bottom-0 dark:border-r dark:border-slate-300 overflow-y-auto">
                 <SidebarContent user={session} />
             </div>
         </>
@@ -59,7 +59,7 @@ const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
 
     return (
         <div className="min-h-full bg-background flex flex-col">
-            <div className="bg-gradient-to-t dark:from-pink-900 dark:via-stone-900 dark:to-stone-950 from-rose-100 to-fuchsia-200">
+            <div className="bg-gradient-to-t dark:from-pink-900/50 dark:via-stone-900 dark:to-stone-950 from-rose-100 to-fuchsia-200">
                 <div className="p-4 border-b border-white dark:border-stone-700">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>

@@ -218,13 +218,13 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
     <>
       <TablePagination pagination={classrooms.pagination} />
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-800 dark:to-gray-800">
           <TableRow>
-            <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
-            <TableHead>ระดับชั้น/ห้อง</TableHead>
-            <TableHead>สร้างเมื่อ</TableHead>
-            <TableHead>อัพเดทเมื่อ</TableHead>
-            <TableHead>จัดการ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>ภาคเรียน/ปีการศึกษา</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>ระดับชั้น/ห้อง</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>สร้างเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>อัพเดทเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>จัดการ</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -233,8 +233,8 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
               <TableRow key={classroom.id}>
                 <TableCell>{classroom.education_term.name}/{classroom.education_year.name}</TableCell>
                 <TableCell>{classroom.level.name}/{classroom.room.name}</TableCell>
-                <TableCell>{new Date(classroom.createdAt).toLocaleString()}</TableCell>
-                <TableCell>{new Date(classroom.updatedAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(classroom.createdAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(classroom.updatedAt).toLocaleString()}</TableCell>
                 <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
                   <Button variant="outline" className="w-full" onClick={() => handleEditClassroom(classroom)}>แก้ไข</Button>
                   <AlertDialog>

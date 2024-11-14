@@ -9,6 +9,7 @@ import { Option } from "@/app/types/import";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { SubmitAddImportData, SubmitAddImportDataByCSV } from "@/app/action/Import";
 import Papa, { ParseResult } from 'papaparse'
+import { TableHead ,Table ,TableBody, TableCell ,TableRow, TableHeader } from "../ui/table";
 export const AddImportData = ({ options }: { options: Option }) => {
     const ref = useRef<HTMLFormElement>(null);
 
@@ -170,7 +171,7 @@ export const AddImportData = ({ options }: { options: Option }) => {
 const ButtonSubmitAddImportData = () => {
     const { pending } = useFormStatus()
     return (
-        <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพื่มข้อมูล"}</Button>
+        <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพิ่มข้อมูล"}</Button>
     )
 }
 
@@ -273,14 +274,14 @@ export const ImportCSV = () => {
                     <div className="flex justify-between mb-4">
                         <Button
                             onClick={handleClear}
-                            className="bg-red-500 text-white px-4 py-2 rounded"
+                            className="bg-red-500 mt-2 text-white rounded"
                         >
                             ล้างค่า
                         </Button>
                         <Button
                             onClick={handleConfirm}
                             disabled={!isValid}
-                            className={`px-4 py-2 rounded ${
+                            className={`rounded ${
                                 isValid
                                     ? 'bg-green-500 text-white'
                                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -289,28 +290,28 @@ export const ImportCSV = () => {
                             ยืนยันเพิ่มข้อมูล
                         </Button>
                     </div>
-                    <table className="table-auto border-collapse border border-gray-400 w-full">
-                        <thead>
-                            <tr>
+                    <Table>
+                        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-700 dark:to-gray-700">
+                            <TableRow>
                                 {Object.keys(preview[0]).map((key, index) => (
-                                    <th key={index} className="border border-gray-400 px-4 py-2">
+                                    <TableHead className="dark:text-slate-200 text-slate-700" key={index}>
                                         {key}
-                                    </th>
+                                    </TableHead>
                                 ))}
-                            </tr>
-                        </thead>
-                        <tbody>
+                            </TableRow>
+                        </TableHeader>
+                        <TableBody>
                             {preview.map((row, rowIndex) => (
-                                <tr key={rowIndex}>
+                                <TableRow key={rowIndex}>
                                     {Object.values(row).map((value, colIndex) => (
-                                        <td key={colIndex} className="border border-gray-400 px-4 py-2">
+                                        <TableCell key={colIndex}>
                                             {value}
-                                        </td>
+                                        </TableCell>
                                     ))}
-                                </tr>
+                                </TableRow>
                             ))}
-                        </tbody>
-                    </table>
+                        </TableBody>
+                    </Table>
                 </div>
             )}
         </div>
