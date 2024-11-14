@@ -12,7 +12,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
     return (
         <>
             <div className="grid grid-cols-1 w-full gap-4 mx-auto px-4 py-8 max-w-4xl">
-                <h2 className='text-center font-bold text-4xl'>ยืนดีต้อนรับ</h2>
+                <h2 className='text-center font-bold text-4xl'>ยินดีต้อนรับ</h2>
                 <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จังหวัดชัยภูมิ</p>
                 <div className="relative w-full max-w-4xl mx-auto px-4 py-8 rounded-xl shadow-2xl overflow-hidden dark:shadow-gray-600">
                     <div className="absolute inset-0 bg-[url(/grass-background.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
