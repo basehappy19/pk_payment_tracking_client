@@ -30,7 +30,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             >
                                 <span><ChecklistIcon /></span>
                                 ตรวจสอบการชำระค่าบำรุงการศึกษา
-                                <p className='text-sm text-fuchsia-200'>⟨สำหรับนักเรียนและผู้ปกครอง⟩</p>
+                                <p className='text-sm text-fuchsia-200'>⟨ สำหรับนักเรียนและผู้ปกครอง ⟩</p>
                                 {session && session.role === 'student' && (
                                     <div className="text-sm mt-2">{session.data.name}</div>
                                 )}
@@ -43,7 +43,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 >
                                     <LockIcon />
                                     <span>เข้าสู่ระบบ</span>
-                                    <p className='text-sm text-pink-200'>⟨เฉพาะคุณครู⟩</p>
+                                    <p className='text-sm text-pink-200'>⟨ เฉพาะคุณครู ⟩</p>
                                 </Link>
                             )}
 
