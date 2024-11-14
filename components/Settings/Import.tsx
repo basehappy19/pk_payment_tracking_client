@@ -171,7 +171,7 @@ export const AddImportData = ({ options }: { options: Option }) => {
 const ButtonSubmitAddImportData = () => {
     const { pending } = useFormStatus()
     return (
-        <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพื่มข้อมูล"}</Button>
+        <Button disabled={pending} type='submit'>{pending ? "กำลังโหลด..." : "เพิ่มข้อมูล"}</Button>
     )
 }
 
@@ -281,10 +281,10 @@ export const ImportCSV = () => {
                         </Button>
                     </div>
                     <Table>
-                        <TableHeader>
+                        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-700 dark:to-gray-700">
                             <TableRow>
                                 {Object.keys(preview[0]).map((key, index) => (
-                                    <TableHead key={index}>
+                                    <TableHead className="dark:text-slate-200 text-slate-700" key={index}>
                                         {key}
                                     </TableHead>
                                 ))}

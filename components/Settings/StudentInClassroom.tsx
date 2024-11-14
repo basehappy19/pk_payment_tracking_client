@@ -298,16 +298,16 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
     <>
       <TablePagination pagination={studentInclassrooms.pagination} />
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-800 dark:to-gray-800">
           <TableRow>
-            <TableHead>รหัสนักเรียน</TableHead>
-            <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
-            <TableHead>ระดับชั้น/ห้อง</TableHead>
-            <TableHead>เลขที่</TableHead>
-            <TableHead>สถานะการชำระ</TableHead>
-            <TableHead>สร้างเมื่อ</TableHead>
-            <TableHead>อัพเดทเมื่อ</TableHead>
-            <TableHead>จัดการ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>รหัสนักเรียน</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>ภาคเรียน/ปีการศึกษา</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>ระดับชั้น/ห้อง</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>เลขที่</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>สถานะการชำระ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>สร้างเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>อัพเดทเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>จัดการ</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -319,8 +319,8 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
                 <TableCell>{studentInclassroom.classroom.level.name}/{studentInclassroom.classroom.room.name}</TableCell>
                 <TableCell>{studentInclassroom.no}</TableCell>
                 <TableCell>{getPaymentStatusBadge(studentInclassroom.pay_status)}</TableCell>
-                <TableCell>{new Date(studentInclassroom.createdAt).toLocaleString()}</TableCell>
-                <TableCell>{new Date(studentInclassroom.updatedAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(studentInclassroom.createdAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(studentInclassroom.updatedAt).toLocaleString()}</TableCell>
                 <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
                   <Button variant="outline" className="w-full" onClick={() => handleEditStudentInClassroom(studentInclassroom)}>แก้ไข</Button>
                   <AlertDialog>

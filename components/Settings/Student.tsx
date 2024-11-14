@@ -134,14 +134,14 @@ export const ListStudents = ({ students }: { students: Student }) => {
     <>
       <TablePagination pagination={students.pagination} />
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-800 dark:to-gray-800">
           <TableRow>
-            <TableHead>รหัสนักเรียน</TableHead>
-            <TableHead>ชื่อ</TableHead>
-            <TableHead>เลขบัตรประชาชน</TableHead>
-            <TableHead>สร้างเมื่อ</TableHead>
-            <TableHead>อัพเดทเมื่อ</TableHead>
-            <TableHead>จัดการ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>รหัสนักเรียน</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>ชื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>เลขบัตรประชาชน</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>สร้างเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>อัพเดทเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>จัดการ</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -151,8 +151,8 @@ export const ListStudents = ({ students }: { students: Student }) => {
                 <TableCell>{student.sid}</TableCell>
                 <TableCell>{student.name}</TableCell>
                 <TableCell>{student.cid}</TableCell>
-                <TableCell>{new Date(student.createdAt).toLocaleString()}</TableCell>
-                <TableCell>{new Date(student.updatedAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(student.createdAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(student.updatedAt).toLocaleString()}</TableCell>
                 <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
                   <Button variant="outline" className="w-full" onClick={() => handleEditStudent(student)}>แก้ไข</Button>
                   <AlertDialog>

@@ -175,14 +175,14 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
     <>
       <TablePagination pagination={studentReceipts.pagination} />
       <Table>
-        <TableHeader>
+        <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-800 dark:to-gray-800">
           <TableRow>
-            <TableHead>รหัสนักเรียน</TableHead>
-            <TableHead>จำนวน</TableHead>
-            <TableHead>เล่มใบเสร็จ</TableHead>
-            <TableHead>สร้างเมื่อ</TableHead>
-            <TableHead>อัพเดทเมื่อ</TableHead>
-            <TableHead>จัดการ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>รหัสนักเรียน</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>จำนวน</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>เล่มใบเสร็จ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>สร้างเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>อัพเดทเมื่อ</TableHead>
+            <TableHead className='dark:text-slate-200 text-slate-700'>จัดการ</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -192,8 +192,8 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
                 <TableCell>{studentReceipt.studentInClassroom.student_sid}</TableCell>
                 <TableCell>{studentReceipt.amount}</TableCell>
                 <TableCell>{studentReceipt.receiptBook.name}</TableCell>
-                <TableCell>{new Date(studentReceipt.createdAt).toLocaleString()}</TableCell>
-                <TableCell>{new Date(studentReceipt.updatedAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(studentReceipt.createdAt).toLocaleString()}</TableCell>
+                <TableCell className='text-blue-500'>{new Date(studentReceipt.updatedAt).toLocaleString()}</TableCell>
                 <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
                   <Button variant="outline" className="w-full" onClick={() => handleEditStudentReceipt(studentReceipt)}>แก้ไข</Button>
                   <AlertDialog>

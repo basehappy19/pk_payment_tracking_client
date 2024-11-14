@@ -59,7 +59,7 @@ const SidebarContent: FC<SidebarContentProps> = ({ user }) => {
 
     return (
         <div className="min-h-full bg-background flex flex-col">
-            <div className="bg-gradient-to-t dark:from-pink-900 dark:via-stone-900 dark:to-stone-950 from-rose-100 to-fuchsia-200">
+            <div className="bg-gradient-to-t dark:from-pink-900/50 dark:via-stone-900 dark:to-stone-950 from-rose-100 to-fuchsia-200">
                 <div className="p-4 border-b border-white dark:border-stone-700">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
