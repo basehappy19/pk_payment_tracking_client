@@ -22,7 +22,7 @@ export default function CardLoginStudent() {
         })
         await AfterSignIn();
         if (res?.error) {
-            return toast.error('รหัสนักเรียน หรือ เลขบัตรประชาชนไม่ถูกต้อง');
+            return toast.error('รหัสนักเรียน หรือ เลขบัตรประชาชนไม่ถูกต้อง', { position: 'bottom-right'});
         }
         router.push('/fee');
     }

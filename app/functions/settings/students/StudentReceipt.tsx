@@ -46,7 +46,7 @@ export const getStudentReceipts = async ({
     }
 };
   
-export const AddStudentReceipt = async ({student_sid, amount, receiptBook}:{student_sid:number, amount:number, receiptBook:number}) => {
+export const AddStudentReceipt = async ({student_sid, amount, receiptBook, receiptNo }:{student_sid:number, amount:number, receiptBook:number, receiptNo:number}) => {
     try {
         const session = await getServerSession(authOptions);
         
@@ -59,7 +59,7 @@ export const AddStudentReceipt = async ({student_sid, amount, receiptBook}:{stud
                 'authorization': session.accessToken,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({student_sid:student_sid, amount:amount, receipt_book_id:receiptBook})
+            body: JSON.stringify({student_sid:student_sid, amount:amount, receipt_book_id:receiptBook, receipt_no: receiptNo})
         })
         if(!res.ok){
             return null;

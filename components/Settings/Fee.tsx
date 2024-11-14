@@ -66,7 +66,7 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddFee(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
         setSelectedValues({
@@ -76,7 +76,7 @@ export const FeeAdd: FC<FeeAddProps> = ({ education_year_options, education_term
       }
     } catch (error) {
       console.error('Failed to add fee:', error);
-      toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -154,27 +154,27 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
   const handleUpdateFee = async () => {
     try {
       if (!editingFee) {
-        return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditFee(editingFee);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingFee(null);
     } catch (error) {
       console.error('Failed to edit fee:', error);
-      toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveFee = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveFee(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove fee:', error);
-      toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบค่าบำรุงการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

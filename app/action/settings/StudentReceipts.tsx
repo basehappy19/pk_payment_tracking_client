@@ -8,6 +8,7 @@ export async function SubmitAddStudentReceipt(formData: FormData) {
   const student_sid = Number(formData.get('student_sid')) as number | null;
   const amount = Number(formData.get('amount')) as number | null;
   const receiptBook = Number(formData.get('receiptBook')) as number | null;
+  const receiptNo = Number(formData.get('receiptNo')) as number | null;
 
   if (!student_sid) {
     return { message:"กรุณาเลือกนักเรียน",type:"error" };
@@ -21,7 +22,11 @@ export async function SubmitAddStudentReceipt(formData: FormData) {
     return { message:"กรุณาเลือกเล่มใบเสร็จ",type:"error" };
   }
 
-  const res = await AddStudentReceipt({ student_sid, amount, receiptBook });
+  if (!receiptNo) {
+    return { message:"กรุณาระบุเล่มที่",type:"error" };
+  }
+
+  const res = await AddStudentReceipt({ student_sid, amount, receiptBook, receiptNo });
 
   revalidatePath('/admin/studentReceipts');
   return res;

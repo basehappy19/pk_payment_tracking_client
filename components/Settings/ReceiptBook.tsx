@@ -58,13 +58,13 @@ export const ReceiptBookAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddReceiptBook(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if(res.type !== 'error'){
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed to add receiptBook:', error);
-      toast.error('ไม่สามารถเพื่มเล่มใบเสร็จได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มเล่มใบเสร็จได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -100,27 +100,27 @@ export const ListReceiptBooks = ({ receiptBooks }: { receiptBooks: ReceiptBook }
   const handleUpdateReceiptBook = async () => {
     try {
       if (!editingReceiptBook) {
-        return toast.error('ไม่สามารถแก้ไขเล่มใบเสร็จได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขเล่มใบเสร็จได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditReceiptBook(editingReceiptBook);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingReceiptBook(null);
     } catch (error) {
       console.error('Failed to edit receiptBook:', error);
-      toast.error('ไม่สามารถแก้ไขเล่มใบเสร็จได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขเล่มใบเสร็จได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveReceiptBook = async (id: number) => {
     try {      
       if (!id) {
-        return toast.error('ไม่สามารถลบเล่มใบเสร็จได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบเล่มใบเสร็จได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveReceiptBook(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove receiptBook:', error);
-      toast.error('ไม่สามารถลบเล่มใบเสร็จได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบเล่มใบเสร็จได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

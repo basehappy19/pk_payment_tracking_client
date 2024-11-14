@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Option } from "@/app/types/import";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
-import { SubmitAddImportData } from "@/app/action/Import";
+import { SubmitAddImportData, SubmitAddImportDataByCSV } from "@/app/action/Import";
 import Papa, { ParseResult } from 'papaparse'
 export const AddImportData = ({ options }: { options: Option }) => {
     const ref = useRef<HTMLFormElement>(null);
@@ -27,7 +27,7 @@ export const AddImportData = ({ options }: { options: Option }) => {
     const handleSubmit = async (formData: FormData) => {
         try {
             const res: Res = await SubmitAddImportData(formData);
-            toast[res.type](res.message);
+            toast[res.type](res.message,{position: 'bottom-right'});
             if (res.type !== 'error') {
                 ref.current?.reset();
                 setSelectedValues({
@@ -40,7 +40,7 @@ export const AddImportData = ({ options }: { options: Option }) => {
             }
         } catch (error) {
             console.error('Failed to add import data:', error);
-            toast.error('ไม่สามารถนำเข้าข้อมูลได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถนำเข้าข้อมูลได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
         }
     };
 
@@ -176,12 +176,14 @@ const ButtonSubmitAddImportData = () => {
 
 
 
-interface CSVData {
-    [key: string]: string | number | boolean | null; // Adjust this type to match your expected data structure
+export interface CSVData {
+    [key: string]: string | number | boolean | null; 
 }
 export const ImportCSV = () => {
     const REQUIRED_HEADERS = [
         'student_id',
+        'student_no',
+        'cid',
         'classroom',
         'student_name',
         'education_year_term',
@@ -209,7 +211,7 @@ export const ImportCSV = () => {
 
                     if (missingHeaders.length > 0) {
                         toast.error(
-                            `ไฟล์ไม่ถูกต้อง! คอลัมน์ที่ขาด: ${missingHeaders.join(', ')}`,
+                            `ไฟล์ไม่ถูกต้อง! ไม่พบคอลัมน์ ${missingHeaders.join(', ')}`,
                             { position: 'bottom-right' }
                         );
                         setData([]);
@@ -219,9 +221,6 @@ export const ImportCSV = () => {
                         setData(parsedData);
                         setPreview(parsedData);
                         setIsValid(true);
-                        toast.success('ไฟล์ CSV ถูกต้องและพร้อมใช้งาน!', {
-                            position: 'bottom-right',
-                        });
                     }
                 },
                 error: (error) => {
@@ -240,8 +239,19 @@ export const ImportCSV = () => {
         setIsValid(false);
     };
 
-    const handleConfirm = () => {
-        console.log('Data confirmed:', data);
+    const handleConfirm = async () => {
+        try {
+            const res: Res = await SubmitAddImportDataByCSV(data);
+            toast[res.type](res.message,{position: 'bottom-right'});
+            if(res.type !== 'error'){
+                setData([]);
+                setPreview([]);
+                setIsValid(false);
+            }
+          } catch (error) {
+            console.error('Failed To Import Data:', error);
+            toast.error('ไม่สามารถนำเข้าข้อมูลได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
+        }
     };
 
     return (

@@ -114,7 +114,7 @@ export const FeeForClassroomAdd: FC<FeeForClassroomAddProps> = ({ feeOptions, cl
     const handleSubmit = async (formData: FormData) => {
         try {
             const res: Res = await SubmitAddFeeForClassroom(formData);
-            toast[res.type](res.message);
+            toast[res.type](res.message,{position: 'bottom-right'});
             if (res.type !== 'error') {
                 ref.current?.reset();
                 setSelectedValues({
@@ -124,7 +124,7 @@ export const FeeForClassroomAdd: FC<FeeForClassroomAddProps> = ({ feeOptions, cl
             }
         } catch (error) {
             console.error('Failed to add feeForClassroom:', error);
-            toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถเพื่มค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
         }
     };
 
@@ -211,14 +211,14 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
     const handleUpdateFeeForClassroom = async () => {
         try {
             if (!editingFeeForClassroom) {
-                return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
+                return toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
             }
             const res: Res = await SubmitEditFeeForClassroom(editingFeeForClassroom);
-            toast[res.type](res.message);
+            toast[res.type](res.message,{position: 'bottom-right'});
             setEditingFeeForClassroom(null);
         } catch (error) {
             console.error('Failed to edit fee for classroom:', error);
-            toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
+            toast.error('ไม่สามารถแก้ไขค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
         }
     };
 
@@ -228,7 +228,7 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                 return toast.error('ไม่สามารถลบค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');
             }
             const res: Res = await SubmitRemoveFeeForClassroom(id);
-            toast[res.type](res.message);
+            toast[res.type](res.message,{position: 'bottom-right'});
         } catch (error) {
             console.error('Failed to remove room:', error);
             toast.error('ไม่สามารถลบค่าบำรุงการศึกษาในห้องเรียนได้ กรุณาลองอีกครั้ง');

@@ -136,7 +136,7 @@ export const StudentInClassroomAdd: FC<StudentInClassroomAddProps> = ({ classroo
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddStudentInClassroom(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
         setSelectedValues({
@@ -146,7 +146,7 @@ export const StudentInClassroomAdd: FC<StudentInClassroomAddProps> = ({ classroo
       }
     } catch (error) {
       console.error('Failed to add studentInclassroom:', error);
-      toast.error('ไม่สามารถเพื่มนักเรียนในห้องได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มนักเรียนในห้องได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -259,27 +259,27 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
   const handleUpdateStudentInClassroom = async () => {
     try {
       if (!editingStudentInClassroom) {
-        return toast.error('ไม่สามารถแก้ไขนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditStudentInClassroom(editingStudentInClassroom);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingStudentInClassroom(null);
     } catch (error) {
       console.error('Failed to edit student in classroom:', error);
-      toast.error('ไม่สามารถแก้ไขนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveStudentInClassroom = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveStudentInClassroom(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove student in classroom:', error);
-      toast.error('ไม่สามารถลบนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบนักเรียนในห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

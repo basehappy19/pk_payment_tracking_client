@@ -58,13 +58,13 @@ export const RoomAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res : Res = await SubmitAddRoom(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if(res.type !== 'error'){
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed to add room:', error);
-      toast.error('ไม่สามารถเพื่มห้องได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มห้องได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -97,24 +97,24 @@ export const ListRooms = ({ rooms }: { rooms: Room }) => {
         return toast.error('ไม่สามารถแก้ไขห้องได้ กรุณาลองอีกครั้ง');
       }
       const res : Res = await SubmitEditRoom(editingRoom);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingRoom(null);
     } catch (error) {
       console.error('Failed to edit room:', error);
-      toast.error('ไม่สามารถแก้ไขห้องได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขห้องได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveRoom = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบห้องได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบห้องได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res : Res = await SubmitRemoveRoom(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove room:', error);
-      toast.error('ไม่สามารถลบห้องได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบห้องได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
   

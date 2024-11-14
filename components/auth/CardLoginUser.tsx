@@ -22,7 +22,7 @@ export default function CardLoginUser() {
         })
         await AfterSignIn();
         if (res?.error) {
-            return toast.error('ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง');
+            return toast.error('ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง', { position: 'bottom-right' });
         }
         router.push('/');
     }

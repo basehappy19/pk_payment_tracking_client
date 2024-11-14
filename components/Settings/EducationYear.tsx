@@ -58,13 +58,13 @@ export const EducationYearAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddEducationYear(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if(res.type !== 'error'){
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed to add education year:', error);
-      toast.error('ไม่สามารถเพิ่มปีการศึกษาได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพิ่มปีการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -94,14 +94,14 @@ export const ListEducationYears = ({ years }: { years: EducationYear }) => {
   const handleUpdateYear = async () => {
     try {
       if (!editingYear) {
-        return toast.error('ไม่สามารถแก้ไขปีการศึกษาได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขปีการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditEducationYear(editingYear);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingYear(null);
     } catch (error) {
       console.error('Failed to edit education year:', error);
-      toast.error('ไม่สามารถแก้ไขปีการศึกษาได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขปีการศึกษาได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -111,7 +111,7 @@ export const ListEducationYears = ({ years }: { years: EducationYear }) => {
         return toast.error('ไม่สามารถลบปีการศึกษาได้ กรุณาลองอีกครั้ง');
       }
       const res: Res = await SubmitRemoveEducationYear(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove education year:', error);
       toast.error('ไม่สามารถลบปีการศึกษาได้ กรุณาลองอีกครั้ง');

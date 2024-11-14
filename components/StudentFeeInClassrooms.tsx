@@ -20,6 +20,7 @@ interface ClassroomFees {
     total_students: number;
     total_fee_for_all_students?: number;
     total_paid_by_all_students?: number;
+    total_paid_students?: number;
     total_missing_students?: number,
     remaining_amount?: number,
 
@@ -116,7 +117,7 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                                 </div>
                                 <Separator className="my-4" />
                                 <div className="flex justify-between items-center font-semibold text-lg">
-                                    <span>ชำระไปแล้ว {studentFeeInClassroom.classroom.total_paid_by_all_students} คน รวมทั้งสิ้น</span>
+                                    <span>ชำระไปแล้ว {studentFeeInClassroom.classroom.total_paid_students} คน รวมทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.total_paid_by_all_students} บาท</span>
                                 </div>
                                 <Separator className="my-4" />

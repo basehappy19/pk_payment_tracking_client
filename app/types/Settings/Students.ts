@@ -56,6 +56,7 @@ export interface StudentReceiptData {
         name:string,
         total_page:number,
     },
+    receipt_no: number,
     createdAt:string,
     updatedAt:string,
 }

@@ -1,5 +1,9 @@
 'use server'
 
+import { revalidatePath } from "next/cache";
+import { AddImportDataByCSV } from "../functions/imports/Import";
+import { CSVData } from "@/components/Settings/Import";
+
 export async function SubmitAddImportData(formData: FormData) {
     const education_year = formData.get('education_year') as string;
     const education_term = formData.get('education_term') as string;
@@ -26,4 +30,10 @@ export async function SubmitAddImportData(formData: FormData) {
   
     // revalidatePath('/admin/education/classrooms');
     // return res;
-  }
+}
+
+export async function SubmitAddImportDataByCSV(CSVData: CSVData[]) {
+  const res = await AddImportDataByCSV(CSVData);
+  revalidatePath('/admin/imports');
+  return res;
+}

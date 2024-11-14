@@ -73,7 +73,7 @@ export const UserAdd = ({ roles }: { roles: { data: { id: number, name: string }
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddUser(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
         setSelectedValues({
@@ -82,7 +82,7 @@ export const UserAdd = ({ roles }: { roles: { data: { id: number, name: string }
       }
     } catch (error) {
       console.error('Failed to add user:', error);
-      toast.error('ไม่สามารถเพื่มผู้ใช้ได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มผู้ใช้ได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -148,27 +148,27 @@ export const ListUsers = ({ users, roles }: { users: User, roles: { data: { id: 
   const handleUpdateUser = async () => {
     try {
       if (!editingUser) {
-        return toast.error('ไม่สามารถแก้ไขผู้ใช้ได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขผู้ใช้ได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditUser(editingUser);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingUser(null);
     } catch (error) {
       console.error('Failed to edit user:', error);
-      toast.error('ไม่สามารถแก้ไขผู้ใช้ได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขผู้ใช้ได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveUser = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบผู้ใช้ได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบผู้ใช้ได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveUser(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove user:', error);
-      toast.error('ไม่สามารถลบผู้ใช้ได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบผู้ใช้ได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

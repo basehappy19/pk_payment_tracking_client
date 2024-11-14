@@ -58,13 +58,13 @@ export const LevelAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddLevel(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if(res.type !== 'error'){
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed to add level:', error);
-      toast.error('ไม่สามารถเพื่มระดับชั้นได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มระดับชั้นได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -94,27 +94,27 @@ export const ListLevels = ({ levels }: { levels: Level }) => {
   const handleUpdateLevel = async () => {
     try {
       if (!editingLevel) {
-        return toast.error('ไม่สามารถแก้ไขระดับชั้นได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขระดับชั้นได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditLevel(editingLevel);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingLevel(null);
     } catch (error) {
       console.error('Failed to edit level:', error);
-      toast.error('ไม่สามารถแก้ไขระดับชั้นได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขระดับชั้นได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveLevel = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบระดับชั้นได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบระดับชั้นได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveLevel(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove level:', error);
-      toast.error('ไม่สามารถลบระดับชั้นได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบระดับชั้นได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

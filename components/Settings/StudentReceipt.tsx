@@ -76,7 +76,7 @@ export const StudentReceiptAdd: FC<StudentReceiptAdd> = ({ receiptBookOptions })
     try {
       const res: Res = await SubmitAddStudentReceipt(formData);
 
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
         setSelectedValues({
@@ -85,7 +85,7 @@ export const StudentReceiptAdd: FC<StudentReceiptAdd> = ({ receiptBookOptions })
       }
     } catch (error) {
       console.error('Failed to add studentReceipt:', error);
-      toast.error('ไม่สามารถเพื่มใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -130,6 +130,12 @@ export const StudentReceiptAdd: FC<StudentReceiptAdd> = ({ receiptBookOptions })
             </SelectContent>
           </Select>
         </div>
+        <Input
+          type="number"
+          name="receiptNo"
+          placeholder="เล่มที่"
+          required
+        />
         <ButtonSubmitFormAddStudentReceipt />
       </div>
     </form>
@@ -145,29 +151,29 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
   const handleUpdateStudentReceipt = async () => {
     try {
       if (!editingStudentReceipt) {
-        return toast.error('ไม่สามารถแก้ไขใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
 
       const res: Res = await SubmitEditStudentReceipt(editingStudentReceipt);
 
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingStudentReceipt(null);
     } catch (error) {
       console.error('Failed to edit studentReceipt:', error);
-      toast.error('ไม่สามารถแก้ไขใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveStudentReceipt = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveStudentReceipt(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove studentReceipt:', error);
-      toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบใบเสร็จนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -180,6 +186,7 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
             <TableHead>รหัสนักเรียน</TableHead>
             <TableHead>จำนวน</TableHead>
             <TableHead>เล่มใบเสร็จ</TableHead>
+            <TableHead>เล่มที่</TableHead>
             <TableHead>สร้างเมื่อ</TableHead>
             <TableHead>อัพเดทเมื่อ</TableHead>
             <TableHead>จัดการ</TableHead>
@@ -192,6 +199,7 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
                 <TableCell>{studentReceipt.studentInClassroom.student_sid}</TableCell>
                 <TableCell>{studentReceipt.amount}</TableCell>
                 <TableCell>{studentReceipt.receiptBook.name}</TableCell>
+                <TableCell>{studentReceipt.receipt_no}</TableCell>
                 <TableCell>{new Date(studentReceipt.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(studentReceipt.updatedAt).toLocaleString()}</TableCell>
                 <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
@@ -258,7 +266,6 @@ export const StudentReceiptEdit: FC<StudentReceiptEditProps> = ({ receiptBookOpt
           onChange={(e) => setEditingStudentReceipt({ ...editingStudentReceipt, amount: Number(e.target.value) })}
         />
         <Label>เล่มใบเสร็จ</Label>
-
         <div className="w-full">
           <Select
             defaultValue={
@@ -279,6 +286,12 @@ export const StudentReceiptEdit: FC<StudentReceiptEditProps> = ({ receiptBookOpt
             </SelectContent>
           </Select>
         </div>
+        <Label>เล่มที่</Label>
+        <Input
+          type='number'
+          value={editingStudentReceipt.receipt_no}
+          onChange={(e) => setEditingStudentReceipt({ ...editingStudentReceipt, receipt_no: Number(e.target.value) })}
+        />
         <AlertDialogFooter>
           <AlertDialogCancel onClick={() => setEditingStudentReceipt(null)}>ยกเลิก</AlertDialogCancel>
           <AlertDialogAction onClick={handleUpdateStudentReceipt}>แก้ไข</AlertDialogAction>

@@ -77,7 +77,7 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddClassroom(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message, {position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
         setSelectedValues({
@@ -89,7 +89,7 @@ export const ClassroomAdd: FC<ClassroomAddProps> = ({ options }) => {
       }
     } catch (error) {
       console.error('Failed to add room:', error);
-      toast.error('ไม่สามารถเพื่มห้องเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -190,14 +190,14 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
   const handleUpdateClassroom = async () => {
     try {
       if (!editingClassroom) {
-        return toast.error('ไม่สามารถแก้ไขห้องเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditClassroom(editingClassroom);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingClassroom(null);
     } catch (error) {
       console.error('Failed to edit classroom:', error);
-      toast.error('ไม่สามารถแก้ไขห้องเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขห้องเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -207,7 +207,7 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
         return toast.error('ไม่สามารถลบห้องเรียนได้ กรุณาลองอีกครั้ง');
       }
       const res: Res = await SubmitRemoveClassroom(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove room:', error);
       toast.error('ไม่สามารถลบห้องเรียนได้ กรุณาลองอีกครั้ง');

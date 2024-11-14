@@ -58,13 +58,13 @@ export const EducationTermAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddEducationTerm(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if(res.type !== 'error'){
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed To Add Education Term:', error);
-      toast.error('ไม่สามารถเพิ่มภาคเรียน กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพิ่มภาคเรียน กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -94,27 +94,27 @@ export const ListEducationTerms = ({ terms }: { terms: EducationTerm }) => {
   const handleUpdateTerm = async () => {
     try {
       if (!editingTerm) {
-        return toast.error('ไม่สามารถแก้ไขภาคเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถแก้ไขภาคเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitEditEducationTerm(editingTerm);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingTerm(null);
     } catch (error) {
       console.error('Failed to Edit Education Term:', error);
-      toast.error('ไม่สามารถแก้ไขภาคเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถแก้ไขภาคเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
   const handleRemoveTerm = async (id: number) => {
     try {
       if (!id) {
-        return toast.error('ไม่สามารถลบภาคเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบภาคเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveEducationTerm(id);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove education term:', error);
-      toast.error('ไม่สามารถลบภาคเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบภาคเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 

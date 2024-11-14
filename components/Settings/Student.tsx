@@ -58,13 +58,13 @@ export const StudentAdd = () => {
   const handleSubmit = async (formData: FormData) => {
     try {
       const res: Res = await SubmitAddStudent(formData);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       if (res.type !== 'error') {
         ref.current?.reset();
       }
     } catch (error) {
       console.error('Failed to add student:', error);
-      toast.error('ไม่สามารถเพื่มนักเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถเพื่มนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
@@ -109,7 +109,7 @@ export const ListStudents = ({ students }: { students: Student }) => {
         return toast.error('ไม่สามารถแก้ไขนักเรียนได้ กรุณาลองอีกครั้ง');
       }
       const res: Res = await SubmitEditStudent(editingStudent);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
       setEditingStudent(null);
     } catch (error) {
       console.error('Failed to edit student:', error);
@@ -120,13 +120,13 @@ export const ListStudents = ({ students }: { students: Student }) => {
   const handleRemoveStudent = async (sid: number) => {
     try {
       if (!sid) {
-        return toast.error('ไม่สามารถลบนักเรียนได้ กรุณาลองอีกครั้ง');
+        return toast.error('ไม่สามารถลบนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
       }
       const res: Res = await SubmitRemoveStudent(sid);
-      toast[res.type](res.message);
+      toast[res.type](res.message,{position: 'bottom-right'});
     } catch (error) {
       console.error('Failed to remove student:', error);
-      toast.error('ไม่สามารถลบนักเรียนได้ กรุณาลองอีกครั้ง');
+      toast.error('ไม่สามารถลบนักเรียนได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
     }
   };
 
