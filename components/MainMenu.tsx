@@ -26,11 +26,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Link
                                 href={`${session && session.role === 'student' ? '/fee' : '/auth/student'}`}
-<<<<<<< HEAD
                                 className={`${session && session.role === 'student' ? 'col-span-full' : ''} font-semibold text-lg bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]`}
-=======
-                                className="font-semibold text-lg text-center bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
->>>>>>> UX/UI
                             >
                                 <span><ChecklistIcon /></span>
                                 ตรวจสอบการชำระค่าบำรุงการศึกษา

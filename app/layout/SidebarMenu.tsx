@@ -1,4 +1,4 @@
-import { BookCopy, BookUser, CircleDollarSign, GraduationCap, Home, ListOrdered, Receipt, SquareStack, University, User, UsersRound, WalletCards } from "lucide-react";
+import { BookCopy, BookUser, CircleDollarSign, GraduationCap, Home, ListOrdered, Receipt, SquareStack, University, Upload, User, UsersRound, WalletCards } from "lucide-react";
 
 export const sideBarMenu = [
     {
@@ -66,4 +66,9 @@ export const sideBarMenu = [
         "path":"/admin/users",
         "icon": <User />
     },
+    {
+        "label":"นำเข้าข้อมูล",
+        "path":"/admin/imports",
+        "icon": <Upload />
+    }
 ]
