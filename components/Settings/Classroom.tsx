@@ -235,11 +235,11 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
                 <TableCell>{classroom.level.name}/{classroom.room.name}</TableCell>
                 <TableCell>{new Date(classroom.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(classroom.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditClassroom(classroom)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditClassroom(classroom)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>

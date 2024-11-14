@@ -47,7 +47,7 @@ export const sideBarMenu = [
         "icon": <CircleDollarSign />
     },
     {
-        "label":"ค่าบำรุงการศึกษาของห้องเรียน",
+        "label":"ค่าบำรุงการศึกษาในห้องเรียน",
         "path":"/admin/fee/classrooms",
         "icon": <WalletCards />
     },

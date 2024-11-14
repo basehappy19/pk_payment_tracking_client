@@ -137,11 +137,11 @@ export const ListRooms = ({ rooms }: { rooms: Room }) => {
                 <TableCell>{room.name}</TableCell>
                 <TableCell>{new Date(room.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(room.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditRoom(room)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditRoom(room)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>

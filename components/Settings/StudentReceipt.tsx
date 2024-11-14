@@ -194,11 +194,11 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
                 <TableCell>{studentReceipt.receiptBook.name}</TableCell>
                 <TableCell>{new Date(studentReceipt.createdAt).toLocaleString()}</TableCell>
                 <TableCell>{new Date(studentReceipt.updatedAt).toLocaleString()}</TableCell>
-                <TableCell>
-                  <Button variant="outline" className="mr-2" onClick={() => handleEditStudentReceipt(studentReceipt)}>แก้ไข</Button>
+                <TableCell className='items-center justify-center flex flex-col md:flex-row gap-3'>
+                  <Button variant="outline" className="w-full" onClick={() => handleEditStudentReceipt(studentReceipt)}>แก้ไข</Button>
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive">ลบ</Button>
+                      <Button className='w-full' variant="destructive">ลบ</Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
