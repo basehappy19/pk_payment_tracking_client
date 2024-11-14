@@ -1,20 +1,43 @@
 'use server'
 
 import { revalidatePath } from "next/cache";
-import { AddImportDataByCSV } from "../functions/imports/Import";
+import { AddImportData, AddImportDataByCSV } from "../functions/imports/Import";
 import { CSVData } from "@/components/Settings/Import";
 
 export async function SubmitAddImportData(formData: FormData) {
-    const education_year = formData.get('education_year') as string;
-    const education_term = formData.get('education_term') as string;
-    const level = formData.get('level') as string;
-    const room = formData.get('room') as string;
+    const studentId = Number(formData.get('studentId') as string);
+    const studentName = formData.get('name') as string;
+    const cid = formData.get('cid') as string;
+    const studentNo = Number(formData.get('no') as string);
+    const level = Number(formData.get('level') as string);
+    const room = Number(formData.get('room') as string);
+    const educationYear = Number(formData.get('educationYear') as string);
+    const educationTerm = Number(formData.get('educationTerm') as string);
+    const receiptBook = Number(formData.get('receiptBook') as string);
+    const receiptNo = Number(formData.get('receiptNo') as string);
+    const amount = Number(formData.get('amount') as string);
   
-    if (!education_year) {
+    if (!studentId) {
+      return { message:"กรุณาระบุรหัสนักเรียน",type:"error" };
+    }
+
+    if (!studentName) {
+      return { message:"กรุณาระบุชื่อนักเรียน",type:"error" };
+    }
+
+    if (!cid) {
+      return { message:"กรุณาระบุเลขบัตรประชาชน",type:"error" };
+    }
+
+    if (!studentNo) {
+      return { message:"กรุณาระบุเลขที่",type:"error" };
+    }
+
+    if (!educationYear) {
       return { message:"กรุณาระบุปีการศึกษา",type:"error" };
     }
   
-    if (!education_term) {
+    if (!educationTerm) {
       return { message:"กรุณาระบุภาคเรียน",type:"error" };
     }
   
@@ -25,11 +48,35 @@ export async function SubmitAddImportData(formData: FormData) {
     if (!room) {
       return { message:"กรุณาระบุห้อง",type:"error" };
     }
+
+    if (!receiptBook) {
+      return { message:"กรุณาระบุเล่มใบเสร็จ",type:"error" };
+    }
+
+    if (!receiptNo) {
+      return { message:"กรุณาระบุเล่มที่",type:"error" };
+    }
+
+    if (!amount) {
+      return { message:"กรุณาระบุจำนวนเงิน",type:"error" };
+    }
   
-    // const res = await AddClassroom({ education_year: parseInt(education_year), education_term: parseInt(education_term), level: parseInt(level), room: parseInt(room) });
+    const res = await AddImportData({
+       studentId: studentId,
+       studentNo: studentNo,
+       studentName: studentName,
+       cid: cid, 
+       education_year: educationYear, 
+       education_term: educationTerm, 
+       level: level, 
+       room: room, 
+       receipt_book_id: receiptBook, 
+       receiptNo: receiptNo, 
+       amount: amount 
+    });
   
-    // revalidatePath('/admin/education/classrooms');
-    // return res;
+    revalidatePath('/admin/imports');
+    return res;
 }
 
 export async function SubmitAddImportDataByCSV(CSVData: CSVData[]) {

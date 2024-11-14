@@ -9,7 +9,7 @@ import { Option } from "@/app/types/import";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { SubmitAddImportData, SubmitAddImportDataByCSV } from "@/app/action/Import";
 import Papa, { ParseResult } from 'papaparse'
-import { TableHead ,Table ,TableBody, TableCell ,TableRow, TableHeader } from "../ui/table";
+import { TableHead, Table, TableBody, TableCell, TableRow, TableHeader } from "../ui/table";
 export const AddImportData = ({ options }: { options: Option }) => {
     const ref = useRef<HTMLFormElement>(null);
 
@@ -28,7 +28,7 @@ export const AddImportData = ({ options }: { options: Option }) => {
     const handleSubmit = async (formData: FormData) => {
         try {
             const res: Res = await SubmitAddImportData(formData);
-            toast[res.type](res.message,{position: 'bottom-right'});
+            toast[res.type](res.message, { position: 'bottom-right' });
             if (res.type !== 'error') {
                 ref.current?.reset();
                 setSelectedValues({
@@ -56,6 +56,38 @@ export const AddImportData = ({ options }: { options: Option }) => {
             <div className="flex flex-col space-y-3">
                 <div className="w-full">
                     <div className="flex flex-row space-x-2">
+                        <div className="w-full">
+                            <Input
+                                type="number"
+                                name="studentId"
+                                placeholder="รหัสนักเรียน"
+                                required
+                            />
+                        </div>
+                        <div className="w-full">
+                            <Input
+                                type="text"
+                                name="name"
+                                placeholder="ชื่อนักเรียน"
+                                required
+                            />
+                        </div>
+                        <div className="w-full">
+                            <Input
+                                type="number"
+                                name="cid"
+                                placeholder="เลขบัตรประชาชน"
+                                required
+                            />
+                        </div>
+                        <div className="w-full">
+                            <Input
+                                type="number"
+                                name="no"
+                                placeholder="เลขที่"
+                                required
+                            />
+                        </div>
                         <div className="w-full">
                             <Select
                                 name="level"
@@ -178,7 +210,7 @@ const ButtonSubmitAddImportData = () => {
 
 
 export interface CSVData {
-    [key: string]: string | number | boolean | null; 
+    [key: string]: string | number | boolean | null;
 }
 export const ImportCSV = () => {
     const REQUIRED_HEADERS = [
@@ -191,7 +223,7 @@ export const ImportCSV = () => {
         'receipt_book_name',
         'receipt_no',
         'amount',
-    ];    
+    ];
     const [data, setData] = useState<CSVData[]>([]);
     const [preview, setPreview] = useState<CSVData[]>([]);
     const [isValid, setIsValid] = useState<boolean>(false);
@@ -243,13 +275,13 @@ export const ImportCSV = () => {
     const handleConfirm = async () => {
         try {
             const res: Res = await SubmitAddImportDataByCSV(data);
-            toast[res.type](res.message,{position: 'bottom-right'});
-            if(res.type !== 'error'){
+            toast[res.type](res.message, { position: 'bottom-right' });
+            if (res.type !== 'error') {
                 setData([]);
                 setPreview([]);
                 setIsValid(false);
             }
-          } catch (error) {
+        } catch (error) {
             console.error('Failed To Import Data:', error);
             toast.error('ไม่สามารถนำเข้าข้อมูลได้ กรุณาลองอีกครั้ง', { position: 'bottom-right' });
         }
@@ -281,11 +313,10 @@ export const ImportCSV = () => {
                         <Button
                             onClick={handleConfirm}
                             disabled={!isValid}
-                            className={`rounded ${
-                                isValid
+                            className={`rounded ${isValid
                                     ? 'bg-green-500 text-white'
                                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            }`}
+                                }`}
                         >
                             ยืนยันเพิ่มข้อมูล
                         </Button>
