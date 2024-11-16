@@ -321,7 +321,7 @@ export const ImportCSV = () => {
                             ยืนยันเพิ่มข้อมูล
                         </Button>
                     </div>
-                    <Table>
+                    <Table className='dark:bg-neutral-900/30'>
                         <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-700 dark:to-gray-700">
                             <TableRow>
                                 {Object.keys(preview[0]).map((key, index) => (

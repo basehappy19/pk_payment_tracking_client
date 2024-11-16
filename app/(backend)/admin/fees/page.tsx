@@ -22,10 +22,11 @@ export default async function ManageFee({searchParams}:{
 
     return (
         <div className="p-4 space-y-4">
-            <h1 className="text-2xl font-bold">จัดการค่าบำรุงการศึกษา</h1>
-
-            <FeeAdd education_year_options={options.education_years} education_term_options={options.education_terms} />
-            <SearchFee />
+            <div className="bg-gradient-to-t space-y-4 from-rose-100 to-pink-200 rounded-md p-2 dark:from-zinc-900 dark:to-stone-900/60">
+                <h1 className="text-2xl font-bold">จัดการค่าบำรุงการศึกษา</h1>
+                <FeeAdd education_year_options={options.education_years} education_term_options={options.education_terms} />
+                <SearchFee />
+            </div>
             <ListFees education_year_options={options.education_years} education_term_options={options.education_terms} fees={fees} />
         </div>
     )

@@ -19,10 +19,12 @@ export default async function ManageStudent({searchParams}:{
     const receiptBookOptions = await getReceiptBookOptions();
     return (
         <div className="p-4 space-y-4">
-            <h1 className="text-2xl font-bold">จัดการใบเสร็จนักเรียน</h1>
+            <div className="bg-gradient-to-t space-y-4 from-rose-100 to-pink-200 rounded-md p-2 dark:from-zinc-900 dark:to-stone-900/60">
+                <h1 className="text-2xl font-bold">จัดการใบเสร็จนักเรียน</h1>
 
-            <StudentReceiptAdd receiptBookOptions={receiptBookOptions} />
-            <SearchStudentReceipt />
+                <StudentReceiptAdd receiptBookOptions={receiptBookOptions} />
+                <SearchStudentReceipt />
+            </div>
             <ListStudentReceipts receiptBookOptions={receiptBookOptions} studentReceipts={studentReceipts} />
         </div>
     )

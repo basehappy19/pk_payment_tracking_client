@@ -83,16 +83,16 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
     return (
         <div>
             {studentFeeInClassroom.students.length > 0 && (
-                <Card className='mb-8'>
+                <Card className='mb-8 dark:bg-zinc-900 dark:border-stone-700/50 border-2 border-pink-300/65 bg-pink-100/80'>
                     <CardHeader>
                         <CardTitle className="text-xl font-semibold">ค่าบำรุงการศึกษาทั้งหมด</CardTitle>
                     </CardHeader>
                     <CardContent>
                         {studentFeeInClassroom.classroom.fees.length > 0 ? (
-                            <ScrollArea className="h-[200px] pr-4">
+                            <ScrollArea className="h-[50px] pr-4">
                                 {studentFeeInClassroom.classroom.fees.map((fee, index) => (
                                     <React.Fragment key={index}>
-                                        <div className="flex justify-between items-center py-2">
+                                        <div className="flex justify-between items-center py-2 text-lg">
                                             <span className="font-medium">{fee.fee.name}</span>
                                             <span>{fee.fee.amount} บาท</span>
                                         </div>
@@ -116,12 +116,12 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                                     <span>{studentFeeInClassroom.classroom.total_fee_for_all_students} บาท</span>
                                 </div>
                                 <Separator className="my-4" />
-                                <div className="flex justify-between items-center font-semibold text-lg">
+                                <div className="flex justify-between items-center font-semibold text-lg text-green-500">
                                     <span>ชำระไปแล้ว {studentFeeInClassroom.classroom.total_paid_students} คน รวมทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.total_paid_by_all_students} บาท</span>
                                 </div>
                                 <Separator className="my-4" />
-                                <div className="flex justify-between items-center font-semibold text-lg">
+                                <div className="flex justify-between items-center font-semibold text-lg text-red-500">
                                     <span>ขาดอีก {studentFeeInClassroom.classroom.total_missing_students} คน รวมทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.remaining_amount} บาท</span>
                                 </div>
@@ -131,7 +131,7 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                 </Card>
             )}
             {studentFeeInClassroom.students.length > 0 && (
-                <Card>
+                <Card className='dark:bg-zinc-900 dark:border-stone-700/50 border-2 border-pink-300/65 bg-pink-100/80'>
                     <CardHeader>
                         <CardTitle className="text-xl font-semibold">รายชื่อนักเรียน</CardTitle>
                     </CardHeader>

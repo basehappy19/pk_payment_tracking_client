@@ -36,7 +36,7 @@ const ClassroomDisplay: FC<ClassroomDisplayProps> = ({ options }) => {
 
     return (
         <main className="min-h-screen container mx-auto p-4">
-            <Card className="mb-8">
+            <Card className="mb-8 dark:bg-zinc-900 dark:border-stone-700/50 border-2 border-pink-300/65 bg-pink-100/80">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center">ตรวจสอบค่าบำรุงการศึกษานักเรียน</CardTitle>
                     {selected.year && selected.term && selected.level && selected.room && (

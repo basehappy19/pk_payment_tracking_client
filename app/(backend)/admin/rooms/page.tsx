@@ -18,10 +18,12 @@ export default async function ManageRoom({searchParams}:{
     const rooms : Room = await getRooms({search:search,page:page})
     return (
         <div className="p-4 space-y-4">
-            <h1 className="text-2xl font-bold">จัดการห้อง</h1>
+            <div className="bg-gradient-to-t space-y-4 from-rose-100 to-pink-200 rounded-md p-2 dark:from-zinc-900 dark:to-stone-900/60">
+                <h1 className="text-2xl font-bold">จัดการห้อง</h1>
 
-            <RoomAdd />
-            <SearchRoom />
+                <RoomAdd />
+                <SearchRoom />
+            </div>
             <ListRooms rooms={rooms} />
         </div>
     )

@@ -14,9 +14,11 @@ const ImportPage = async () => {
     
     return (
         <div className="p-4 space-y-8">
-            <h1 className="text-2xl font-bold">นำเข้าข้อมูล</h1>
+            <div className="bg-gradient-to-t space-y-4 from-rose-100 to-pink-200 rounded-md p-2 dark:from-zinc-900 dark:to-stone-900/60">
+                <h1 className="text-2xl font-bold">นำเข้าข้อมูล</h1>
 
-            <AddImportData options={options} />
+                <AddImportData options={options} />
+            </div>
             <ImportCSV />
         </div>
     )

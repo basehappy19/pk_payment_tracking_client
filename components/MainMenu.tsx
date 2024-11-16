@@ -12,7 +12,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
     return (
         <>
             <div className="grid grid-cols-1 w-full gap-4 mx-auto px-4 py-8 max-w-4xl">
-                <h2 className='text-center font-bold text-4xl'>ยินดีต้อนรับ</h2>
+                <h2 className='text-center font-bold text-4xl'>ระบบตรวจสอบค่าบำรุงการศึกษา</h2>
                 <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จังหวัดชัยภูมิ</p>
                 <div className="relative w-full max-w-4xl mx-auto px-4 py-8 rounded-xl shadow-2xl overflow-hidden dark:shadow-gray-600">
                     <div className="absolute inset-0 bg-[url(/grass-background.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
@@ -20,17 +20,17 @@ const MainMenu = ({ session }: { session: Session | null }) => {
 
                     <div className="relative z-10 space-y-8">
                         <h1 className="text-3xl md:text-4xl font-bold text-center text-white">
-                            ระบบตรวจสอบค่าบำรุงการศึกษา
+                            Menu
                         </h1>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <Link
                                 href={`${session && session.role === 'student' ? '/fee' : '/auth/student'}`}
-                                className={`${session && session.role === 'student' ? 'col-span-full' : ''} font-semibold text-lg bg-gradient-to-r from-fuchsia-600 to-fuchsia-500 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]`}
+                                className={`${session && session.role === 'student' ? 'col-span-full' : ''} font-semibold text-lg bg-gradient-to-r from-fuchsia-600 via-fuchsia-500 to-fuchsia-600 hover:bg-fuchsia-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]`}
                             >
                                 <span><ChecklistIcon /></span>
                                 ตรวจสอบการชำระค่าบำรุงการศึกษา
-                                <p className='text-sm text-fuchsia-200'>⟨ สำหรับนักเรียนและผู้ปกครอง ⟩</p>
+                                <p className='text-base text-fuchsia-200'>⟨ สำหรับนักเรียนและผู้ปกครอง ⟩</p>
                                 {session && session.role === 'student' && (
                                     <div className="text-sm mt-2">{session.data.name}</div>
                                 )}
@@ -39,38 +39,62 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             {!session && (
                                 <Link
                                     href="/auth/user"
-                                    className="font-semibold text-lg bg-gradient-to-r from-pink-500 to-pink-600 hover:bg-pink-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 hover:bg-pink-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <LockIcon />
                                     <span>เข้าสู่ระบบ</span>
-                                    <p className='text-sm text-pink-200'>⟨ เฉพาะคุณครู ⟩</p>
+                                    <p className='text-base text-pink-200'>⟨ เฉพาะคุณครูและเจ้าหน้าที่ ⟩</p>
                                 </Link>
                             )}
 
                             {session && session.role === 'user' && (
                                 <Link
                                     href="/fee/students"
-                                    className="font-semibold text-center text-lg bg-gradient-to-r from-green-500 to-emerald-600 hover:bg-green-500 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-center text-lg bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 hover:bg-green-500 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <PigMoneyIcon />
                                     <span>ตรวจสอบการชำระค่าบำรุงการศึกษารายห้อง</span>
+                                    <p className='text-base text-green-200'>⟨ สำหรับคุณครูที่ปรึกษา ⟩</p>
+                                </Link>
+                            )}
+                            {session && session.role === 'user' && session.data.role?.id === 3 && (
+                                <Link
+                                href={`/admin`}
+                                className="font-semibold text-lg col-span-full bg-gradient-to-r col-span-1 from-violet-600 via-purple-500 to-violet-600 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                >
+                                    <TheOfficialIcon />
+                                    <span>จัดการเงินค่าบำรุงการศึกษา</span>
+                                    <p className='text-base text-indigo-200'>⟨ สำหรับเจ้าหน้าที่ฝ่ายบริหารการเงิน ⟩</p>
                                 </Link>
                             )}
 
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
                                     href={`/admin`}
-                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-yellow-500 to-orange-500 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg col-span-full bg-gradient-to-r col-span-1 from-slate-700 via-gray-500 to-slate-700 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                >
+                                    <GraphIcon />
+                                    <span>ยอดเงินสถิติ</span>
+                                    <p className='text-base text-gray-200'>⟨ สำหรับผู้อำนวยการ ⟩</p>
+                                </Link>
+                            )}
+
+                            {session && session.role === 'user' && session.data.role?.id === 3 && (
+                                <Link
+                                    href={`/admin`}
+                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-400 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <LayoutDashboard />
                                     <span>จัดการระบบ</span>
+                                    <p className='text-base text-yellow-100'>⟨ สำหรับแอดมิน ⟩</p>
                                 </Link>
                             )}
+
 
                             {session && (
                                 <button
                                     onClick={() => signOut({ callbackUrl: '/', redirect: true })}
-                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-indigo-500 to-cyan-500 hover:bg-cyan-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-500 hover:bg-cyan-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <LogOut />
                                     <span>ออกจากระบบ</span>
@@ -83,11 +107,11 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                     <div className="flex justify-center">
                         <div className="p-4 my-2 dark:shadow-rose-950 dark:from-pink-600 dark:via-rose-600 dark:to-pink-600 bg-gradient-to-r via-rose-400 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
-                                <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                                 <div className='text-center'>
                                     <div className='font-light text-sm dark:text-amber-100'>⟨ ผู้อำนวยการโรงเรียน ⟩</div>
                                     <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
                                 </div>
+                                <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                             </div>
                         </div>
                     </div>
@@ -123,6 +147,24 @@ const ChecklistIcon = () => (
         <path d="M14 19l2 2l4 -4" />
         <path d="M9 8h4" />
         <path d="M9 12h2" />
+    </svg>
+);
+
+const TheOfficialIcon = () => (
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="inline-flex icon icon-tabler icons-tabler-outline icon-tabler-brand-ctemplar">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M6.04 14.831l4.46 -4.331" />
+        <path d="M12.555 20.82c4.55 -3.456 7.582 -8.639 8.426 -14.405a1.668 1.668 0 0 0 -.934 -1.767a19.647 19.647 0 0 0 -8.047 -1.648a19.647 19.647 0 0 0 -8.047 1.647a1.668 1.668 0 0 0 -.934 1.767c.844 5.766 3.875 10.95 8.426 14.406a.948 .948 0 0 0 1.11 0z" />
+        <path d="M20 5c-2 0 -4.37 3.304 -8 6.644c-3.63 -3.34 -6 -6.644 -8 -6.644" />
+        <path d="M17.738 15l-4.238 -4.5" />
+    </svg>
+);
+
+const GraphIcon = () => (
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="inline-flex icon icon-tabler icons-tabler-outline icon-tabler-graph">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 18v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+        <path d="M7 14l3 -3l2 2l3 -3l2 2" />
     </svg>
 );
 

@@ -19,10 +19,12 @@ export default async function ManageUser({searchParams}:{
     const roles = await getRoleOptions();
     return (
         <div className="p-4 space-y-4">
-            <h1 className="text-2xl font-bold">จัดการผู้ใช้</h1>
+            <div className="bg-gradient-to-t space-y-4 from-rose-100 to-pink-200 rounded-md p-2 dark:from-zinc-900 dark:to-stone-900/60">
+                <h1 className="text-2xl font-bold">จัดการผู้ใช้</h1>
 
-            <UserAdd roles={roles} />
-            <SearchUser />
+                <UserAdd roles={roles} />
+                <SearchUser />
+            </div>
             <ListUsers users={users} roles={roles} />
         </div>
     )

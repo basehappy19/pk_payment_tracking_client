@@ -77,11 +77,11 @@ export default async function StudentDashboard({ searchParams }: {
   const getPaymentStatusBadge = (payStatus: string) => {
     switch (payStatus) {
       case 'done':
-        return <div className='text-green-500 dark:text-green-800 font-semibold'>ชำระครบเรียบร้อย</div>;
+        return <div className='text-green-500 dark:text-green-600 font-semibold'>ชำระครบเรียบร้อย</div>;
       case 'paying':
-        return <div className='text-orange-500 dark:text-orange-800 font-semibold'>อยู่ระหว่างชำระ</div>;
+        return <div className='text-orange-500 dark:text-orange-600 font-semibold'>อยู่ระหว่างชำระ</div>;
       default:
-        return <div className='text-red-500 dark:text-red-800 font-semibold'>ยังไม่ชำระ</div>;
+        return <div className='text-red-500 dark:text-red-600 font-semibold'>ยังไม่ชำระ</div>;
     }
   }; 
    
@@ -89,11 +89,11 @@ export default async function StudentDashboard({ searchParams }: {
     <div className="container mx-auto p-4 space-y-6">
       <div>
         <h1 className="text-3xl font-bold">ตรวจสอบการชำระค่าบำรุงการศึกษา</h1>
-        <p className="text-md text-muted-foreground mt-2">
+        <p className="text-xl dark:text-pink-400 mt-2 text-pink-500">
           ประจำปีการศึกษา {status.studentInClassroom.classroom.education_year.name} เทอม {status.studentInClassroom.classroom.education_term.name}
         </p>
       </div>
-      <Card>
+      <Card className='dark:bg-zinc-900 bg-pink-100/80 border dark:border-stone-700/50 border-pink-300/65 border-2'>
         <CardHeader>
           <CardTitle>สวัสดี, {status.name}</CardTitle>
         </CardHeader>
@@ -106,44 +106,23 @@ export default async function StudentDashboard({ searchParams }: {
             </div>
             <div>
               <h3 className="text-xl font-semibold mb-2">สถานะการชำระเงิน</h3>
-              {getPaymentStatusBadge(status.studentInClassroom.pay_status)}
+              <p className='text-lg dark:text-red-400'>
+                {getPaymentStatusBadge(status.studentInClassroom.pay_status)}
+              </p>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>รายการชำระทั้งหมด</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>รายการ</TableHead>
-                <TableHead className="text-right">จำนวนเงิน</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {status.studentInClassroom.classroom.feeForClassrooms.map((fee) => (
-                <TableRow key={fee.id}>
-                  <TableCell>{fee.fee.name}</TableCell>
-                  <TableCell className="text-right">{fee.fee.amount.toString()} บาท</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
 
-      <Card>
+      <Card className='dark:bg-zinc-900 dark:border-stone-700/50 border-2 border-pink-300/65 bg-pink-100/80'>
         <CardHeader>
           <CardTitle>การชำระค่าบำรุงการศึกษา รายปีการศึกษา</CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
+          <Table className='text-md'>
             <TableHeader>
-              <TableRow>
+              <TableRow className='bg-fuchsia-200/50 dark:bg-fuchsia-800/50'>
                 <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
                 <TableHead>ระดับชั้น/ห้อง</TableHead>
                 <TableHead>จำนวนเงิน</TableHead>
@@ -165,6 +144,31 @@ export default async function StudentDashboard({ searchParams }: {
         </CardContent>
       </Card>
       <NextPrvFees pagination={status.pagination} />
+
+
+      <Card className='dark:bg-zinc-900 dark:border-stone-700/50 border-2 border-pink-300/65 bg-pink-100/80'>
+        <CardHeader>
+          <CardTitle>รายการชำระทั้งหมด</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className='text-lg'>รายการ</TableHead>
+                <TableHead className="text-right text-lg">จำนวนเงิน</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody className='text-lg'>
+              {status.studentInClassroom.classroom.feeForClassrooms.map((fee) => (
+                <TableRow key={fee.id}>
+                  <TableCell>{fee.fee.name}</TableCell>
+                  <TableCell className="text-right">{fee.fee.amount.toString()} บาท</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   )
 }
