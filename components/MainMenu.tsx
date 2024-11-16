@@ -60,7 +60,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
                                 href={`/admin`}
-                                className="font-semibold text-lg col-span-full bg-gradient-to-r col-span-1 from-violet-600 via-purple-500 to-violet-600 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                className="font-semibold text-lg bg-gradient-to-r col-span-1 from-violet-600 via-purple-500 to-violet-600 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <TheOfficialIcon />
                                     <span>จัดการเงินค่าบำรุงการศึกษา</span>
@@ -71,7 +71,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
                                     href={`/admin`}
-                                    className="font-semibold text-lg col-span-full bg-gradient-to-r col-span-1 from-slate-700 via-gray-500 to-slate-700 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg bg-gradient-to-r col-span-1 from-slate-700 via-gray-500 to-slate-700 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <GraphIcon />
                                     <span>ยอดเงินสถิติ</span>
