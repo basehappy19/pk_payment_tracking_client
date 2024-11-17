@@ -57,7 +57,7 @@ export const sideBarMenu = [
         "icon": <BookCopy />
     },
     {
-        "label":"ใบเสร็จของนักเรียน",
+        "label":"ใบเสร็จชำระของนักเรียน",
         "path":"/admin/studentReceipts",
         "icon": <Receipt />
     },
