@@ -103,24 +103,24 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
                         ) : (
                             <div className='w-full flex justify-center'>ไม่มีข้อมูลค่าบำรุงการศึกษา</div>
                         )}
-                        <Separator className="my-4" />
+                        <Separator className="my-4 border-b-2 border-pink-300/65 dark:border-stone-700/50" />
                         <div className="flex justify-between items-center font-semibold text-lg">
                             <span>รวมค่าบำรุงการศึกษาทั้งหมด</span>
                             <span>{studentFeeInClassroom.classroom.total_fee_amount} บาท</span>
                         </div>
                         {user && (user?.data.role?.id == 2 || user?.data.role?.id == 3) && (
                             <React.Fragment>
-                                <Separator className="my-4" />
+                                <Separator className="my-4 border-b-2 border-pink-300/65 dark:border-stone-700/50" />
                                 <div className="flex justify-between items-center font-semibold text-lg">
                                     <span>จำนวนนักเรียน {studentFeeInClassroom.classroom.total_students} คน รวมเป็นทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.total_fee_for_all_students} บาท</span>
                                 </div>
-                                <Separator className="my-4" />
+                                <Separator className="my-4 border-b-2 border-pink-300/65 dark:border-stone-700/50" />
                                 <div className="flex justify-between items-center font-semibold text-lg text-green-500">
                                     <span>ชำระไปแล้ว {studentFeeInClassroom.classroom.total_paid_students} คน รวมทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.total_paid_by_all_students} บาท</span>
                                 </div>
-                                <Separator className="my-4" />
+                                <Separator className="my-4 border-b-2 border-pink-300/65 dark:border-stone-700/50" />
                                 <div className="flex justify-between items-center font-semibold text-lg text-red-500">
                                     <span>ขาดอีก {studentFeeInClassroom.classroom.total_missing_students} คน รวมทั้งสิ้น</span>
                                     <span>{studentFeeInClassroom.classroom.remaining_amount} บาท</span>

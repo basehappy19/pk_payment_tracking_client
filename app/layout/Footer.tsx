@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-purple-500 dark:bg-violet-500/60 py-2 text-center text-sm">
-        <p>&copy; 2024 <Link target='_blank' className='underline' href={`https://phukhieo.ac.th`}>Phukhieo School</Link></p>
+        <p>&copy; 2024 <Link target='_blank' className='underline' href={`https://phukhieo.ac.th`}>Official Phukhieo School</Link></p>
       </div>
     </footer>
   );

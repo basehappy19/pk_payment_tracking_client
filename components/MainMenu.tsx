@@ -15,7 +15,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                 <h2 className='text-center font-bold text-4xl'>ระบบตรวจสอบค่าบำรุงการศึกษา</h2>
                 <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จังหวัดชัยภูมิ</p>
                 <div className="relative w-full max-w-4xl mx-auto px-4 py-8 rounded-xl shadow-2xl overflow-hidden dark:shadow-gray-600">
-                    <div className="absolute inset-0 bg-[url(/grass-background.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
+                    <div className="absolute inset-0 bg-[url(/building_bg2.jpg)] dark:bg-[url(/building_bg3.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
                     <div className="absolute inset-0 bg-black opacity-10"></div>
 
                     <div className="relative z-10 space-y-8">
@@ -107,11 +107,11 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                     <div className="flex justify-center">
                         <div className="p-4 my-2 dark:shadow-rose-950 dark:from-pink-600 dark:via-rose-600 dark:to-pink-600 bg-gradient-to-r via-rose-400 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
-                                <div className='text-center'>
-                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ผู้อำนวยการโรงเรียน ⟩</div>
-                                    <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
-                                </div>
                                 <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ผู้อำนวยการโรงเรียน ⟩</div>
+                                </div>
                             </div>
                         </div>
                     </div>

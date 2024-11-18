@@ -122,7 +122,7 @@ export default async function StudentDashboard({ searchParams }: {
         <CardContent>
           <Table className='text-md'>
             <TableHeader>
-              <TableRow className='bg-fuchsia-200/50 dark:bg-fuchsia-800/50'>
+              <TableRow className='bg-fuchsia-200/50 dark:bg-fuchsia-800/50 border-b-2 border-pink-300/65 dark:border-stone-700/50'>
                 <TableHead>ภาคเรียน/ปีการศึกษา</TableHead>
                 <TableHead>ระดับชั้น/ห้อง</TableHead>
                 <TableHead>จำนวนเงิน</TableHead>
@@ -153,7 +153,7 @@ export default async function StudentDashboard({ searchParams }: {
         <CardContent>
           <Table>
             <TableHeader>
-              <TableRow>
+              <TableRow className='border-b-2 border-pink-300/65 dark:border-stone-700/50'>
                 <TableHead className='text-lg'>รายการ</TableHead>
                 <TableHead className="text-right text-lg">จำนวนเงิน</TableHead>
               </TableRow>
