@@ -1,5 +1,4 @@
 import React from 'react';
-import { Code, Paintbrush } from 'lucide-react';
 import Link from 'next/link';
 
 const Footer = () => {
