@@ -24,15 +24,15 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
             <Image src={logo_pk} quality={100} width={40} height={40} alt="logo" />
-            <span className="font-semibold text-xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
+            <span className="font-semibold text-2xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-blue-500 transition-colors">
+            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-pink-500 transition-colors">
               ตรวจสอบการชำระค่าบำรุงการศึกษา
             </Link>
             {!session ? (
-              <Link href="/auth/user" className="hover:text-blue-500 transition-colors">
+              <Link href="/auth/user" className="transition ease-in-out delay-150 hover:transition-all hover:scale-110 hover:text-pink-500 dark:hover:text-pink-500 transition-colors bg-gradient-to-r from-zinc-700 to-gray-800 text-gray-100 dark:from-pink-400 dark:to-red-300 dark:text-gray-900 px-3 py-2 rounded-md">
                 เข้าสู่ระบบ
               </Link>
             ) : (
@@ -48,11 +48,11 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
 
         {isOpen && (
           <div className="md:hidden mt-4 space-y-2">
-            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="block hover:text-blue-500 transition-colors py-2">
+            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="block hover:text-pink-500 transition-colors py-2">
               ตรวจสอบการชำระค่าบำรุงการศึกษา
             </Link>
             {!session ? (
-              <Link href="/auth/user" className="block hover:text-blue-500 transition-colors py-2">
+              <Link href="/auth/user" className="block hover:text-pink-500 transition-colors py-2">
                 เข้าสู่ระบบ
               </Link>
             ) : (

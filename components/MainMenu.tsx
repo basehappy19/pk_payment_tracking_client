@@ -8,12 +8,20 @@ import Image from 'next/image';
 import drImg from '../public/cr/dr.png'
 import longuom from '../public/cr/longuom.jpg'
 import mongkon from '../public/cr/mongkon.jpg'
+import Time from '../public/cr/Time.jpg'
 const MainMenu = ({ session }: { session: Session | null }) => {
     return (
         <>
             <div className="grid grid-cols-1 w-full gap-4 mx-auto px-4 py-8 max-w-4xl">
                 <h2 className='text-center font-bold text-4xl'>ระบบตรวจสอบค่าบำรุงการศึกษา</h2>
-                <p className='text-center font-semibold text-normal dark:text-gray-300 text-gray-700'>โรงเรียนภูเขียว จังหวัดชัยภูมิ</p>
+                <div className="">
+                    <p className='text-center font-semibold text-lg -mt-3 dark:text-gray-300 text-gray-700'>
+                    กลุ่มบริหารงบประมาณ โรงเรียนภูเขียว อำเภอภูเขียว จังหวัดชัยภูมิ
+                    </p>
+                    <p className='text-center font-semibold text-lg -mt-1 dark:text-gray-300 text-gray-700'>
+                        สำนักงานเขตพื้นที่การศึกษามัธยมศึกษาชัยภูมิ
+                    </p>
+                </div>
                 <div className="relative w-full max-w-4xl mx-auto px-4 py-8 rounded-xl shadow-2xl overflow-hidden dark:shadow-gray-600">
                     <div className="absolute inset-0 bg-[url(/building_bg2.jpg)] dark:bg-[url(/building_bg3.jpg)] bg-center bg-cover filter blur-[1.2px]"></div>
                     <div className="absolute inset-0 bg-black opacity-10"></div>
@@ -63,8 +71,8 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 className="font-semibold text-lg bg-gradient-to-r col-span-1 from-violet-600 via-purple-500 to-violet-600 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <TheOfficialIcon />
-                                    <span>จัดการเงินค่าบำรุงการศึกษา</span>
-                                    <p className='text-base text-indigo-200'>⟨ สำหรับเจ้าหน้าที่ฝ่ายบริหารการเงิน ⟩</p>
+                                    <span>บันทึกการชำระเงินค่าบำรุงการศึกษา</span>
+                                    <p className='text-base text-violet-200'>⟨ สำหรับเจ้าหน้าที่การเงิน ⟩</p>
                                 </Link>
                             )}
 
@@ -74,19 +82,19 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                     className="font-semibold text-lg bg-gradient-to-r col-span-1 from-slate-700 via-gray-500 to-slate-700 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <GraphIcon />
-                                    <span>ยอดเงินสถิติ</span>
-                                    <p className='text-base text-gray-200'>⟨ สำหรับผู้อำนวยการ ⟩</p>
+                                    <span>รายงานการชำระเงินค่าบำรุงการศึกษา</span>
+                                    <p className='text-base text-gray-200'>⟨ สำหรับผู้บริหาร ⟩</p>
                                 </Link>
                             )}
 
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
                                     href={`/admin`}
-                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-400 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg col-span-1 bg-gradient-to-r from-orange-400 via-yellow-500 to-orange-400 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <LayoutDashboard />
                                     <span>จัดการระบบ</span>
-                                    <p className='text-base text-yellow-100'>⟨ สำหรับแอดมิน ⟩</p>
+                                    <p className='text-base text-yellow-100'>⟨ แอดมินและผู้รับผิดชอบ ⟩</p>
                                 </Link>
                             )}
 
@@ -94,7 +102,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             {session && (
                                 <button
                                     onClick={() => signOut({ callbackUrl: '/', redirect: true })}
-                                    className="font-semibold text-lg col-span-full bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-500 hover:bg-cyan-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
+                                    className="font-semibold text-lg col-span-1 bg-gradient-to-r from-indigo-500 via-cyan-500 to-indigo-500 hover:bg-cyan-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <LogOut />
                                     <span>ออกจากระบบ</span>
@@ -103,10 +111,14 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         </div>
                     </div>
                 </div>
+
                 <div>
-                    <div className="flex justify-center">
-                        <div className="p-4 my-2 dark:shadow-rose-950 dark:from-pink-600 dark:via-rose-600 dark:to-pink-600 bg-gradient-to-r via-rose-400 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
-                            <div className="flex items-center flex-col text-white justify-center">
+                    <p className='text-2xl font-semibold text-center mt-10 m-2'>
+                        คณะกรรมการพัฒนาโปแกรม
+                    </p>
+                    <div className="grid md:grid-cols-2 justify-center gap-2">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                            <div className="flex items-center flex-col col-span-1 md:col-span-1 text-white justify-center">
                                 <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                                 <div className='text-center'>
                                     <div className='font-light dark:text-amber-100'>นายธรรมนูญ วิชาหา</div>
@@ -114,24 +126,49 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="grid md:grid-cols-2 justify-center gap-2">
-                        <div className="p-4 dark:shadow-fuchsia-950 dark:from-fuchsia-600 dark:to-pink-600 bg-gradient-to-r from-fuchsia-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-fuchsia-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
-                                <div className='text-center'>
-                                    <div className='font-light dark:text-pink-100'>นางสาวปาณิตา อาจวงษ์</div>
-                                    <div className='font-light text-sm dark:text-pink-100'>⟨ รองผู้อำนวยการกลุ่มบริหารงบประมาณ ⟩</div>
-                                </div>
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={longuom} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นางสาวปาณิตา อาจวงษ์</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ รองผู้อำนวยการกลุ่มบริหารงบประมาณ ⟩</div>
+                                </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-fuchsia-950 dark:from-pink-600 dark:to-fuchsia-600 bg-gradient-to-r from-pink-400 to-fuchsia-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-fuchsia-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
-                                <div className='text-center'>
-                                    <div className='font-light dark:text-pink-100'>นายมงคล ชนะดี</div>
-                                    <div className='font-light text-sm dark:text-pink-100'>⟨ ที่ปรึกษา ⟩</div>
-                                </div>
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นายมงคล ชนะดี</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ที่ปรึกษา/แอดมิน ⟩</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                            <div className="flex items-center flex-col text-white justify-center">
+                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นางสาวธรีดา เลาประเสริฐสุข</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ที่ปรึกษา ⟩</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                            <div className="flex items-center flex-col text-white justify-center">
+                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นายภาคภูมิ ทีดินดำ</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ม.4/1 SMT15 FRONTEND/BACKEND ⟩</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                            <div className="flex items-center flex-col text-white justify-center">
+                                <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={Time} />
+                                <div className='text-center'>
+                                    <div className='font-light dark:text-amber-100'>นางสาวแทมมารีน ตาปราบ</div>
+                                    <div className='font-light text-sm dark:text-amber-100'>⟨ ม.4/1 SMT15 UX/UI ⟩</div>
+                                </div>
                             </div>
                         </div>
                     </div>
