@@ -6,6 +6,7 @@ import { Session } from '../types/session';
 import UserProfile from '@/components/UserProfile';
 import { ModeToggle } from '@/components/SwitchThemeMode';
 import logo_pk from '@/public/logo_pk.png'
+import { CircleDollarSign } from 'lucide-react';
 interface NavbarProps {
   session: Session | null;
 }
@@ -19,7 +20,7 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
   };
 
   return (
-    <div className="bg-gradient-to-r dark:from-[#1c1b1e] dark:to-zinc-800 from-red-200 to-pink-300 text-black dark:text-white dark:shadow-none ">
+    <div className="bg-gradient-to-r dark:from-[#1c1b1e] dark:to-zinc-800 bg-[#FAADCC] text-black dark:text-white dark:shadow-none shadow-sm drop-shadow-md shadow-[#D97CA1]">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
@@ -27,12 +28,12 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
             <span className="font-semibold text-xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-blue-500 transition-colors">
+          <div className="hidden md:flex items-center space-x-4 ">
+            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-[#E75B89] transition-colors">
               ตรวจสอบการชำระค่าบำรุงการศึกษา
             </Link>
             {!session ? (
-              <Link href="/auth/user" className="hover:text-blue-500 transition-colors">
+              <Link href="/auth/user" className="hover:text-[#E75B89] transition-colors">
                 เข้าสู่ระบบ
               </Link>
             ) : (

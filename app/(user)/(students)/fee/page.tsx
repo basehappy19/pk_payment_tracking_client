@@ -77,7 +77,7 @@ export default async function StudentDashboard({ searchParams }: {
   const getPaymentStatusBadge = (payStatus: string) => {
     switch (payStatus) {
       case 'done':
-        return <div className='text-green-500 dark:text-green-800 font-semibold'>ชำระครบเรียบร้อย</div>;
+        return <div className='text-green-500 dark:text-green-800 font-semibold'>ชำระครบnpm เรียบร้อย</div>;
       case 'paying':
         return <div className='text-orange-500 dark:text-orange-800 font-semibold'>อยู่ระหว่างชำระ</div>;
       default:
@@ -86,7 +86,8 @@ export default async function StudentDashboard({ searchParams }: {
   }; 
    
   return (
-    <div className="container mx-auto p-4 space-y-6">
+    <main className='bg-[#FBC8DD] dark:bg-black'>
+      <div className="container mx-auto p-4 space-y-6">
       <div>
         <h1 className="text-3xl font-bold">ตรวจสอบการชำระค่าบำรุงการศึกษา</h1>
         <p className="text-md text-muted-foreground mt-2">
@@ -166,5 +167,6 @@ export default async function StudentDashboard({ searchParams }: {
       </Card>
       <NextPrvFees pagination={status.pagination} />
     </div>
+    </main>
   )
 }

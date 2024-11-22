@@ -28,8 +28,8 @@ export default function CardLoginStudent() {
     }
 
     return (
-        <main className="flex justify-center items-center min-h-[80vh]">
-            <Card className="w-full md:w-1/2">
+        <div className="flex justify-center items-center min-h-[80vh] bg-[#FEB3CD] dark:bg-black">
+            <Card className="w-full md:w-1/2 bg-gradient-to-b from-[#F8B5D1] to-[#FCD3E3] dark:bg-black dark:bg-none">
                 <CardHeader>
                     <CardTitle className="text-2xl font-medium text-center">ตรวจค่าบำรุงการศึกษานักเรียน</CardTitle>
                     <CardDescription className="text-center">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</CardDescription>
@@ -48,6 +48,6 @@ export default function CardLoginStudent() {
                     </form>
                 </CardContent>
             </Card>
-        </main>
+        </div>
     )
 }
