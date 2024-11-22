@@ -27,9 +27,9 @@ const UserProfile: FC<UserProfile> = ({ user }) => {
       {user ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="w-full justify-start gap-2 px-2">
-              <Avatar className="w-8 h-8">
-                {user && (user.role === 'student') && <AvatarImage src={`${process.env.NEXT_PUBLIC_STUDENT_PROFILE_IMG}/${user?.data.profileImg}`} />}
+            <Button variant="ghost" className="p-6 w-full justify-start gap-2">
+              <Avatar>
+                {user && (user.role === 'student') && <AvatarImage className='bg-top object-cover' src={`${process.env.NEXT_PUBLIC_STUDENT_PROFILE_IMG}/${user?.data.profileImg}`} />}
                 <AvatarFallback>
                   {user && (user.role === 'user') && user?.data.fullname}
                   {user && (user.role === 'student') && user?.data.name}
