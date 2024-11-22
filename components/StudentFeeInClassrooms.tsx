@@ -76,8 +76,6 @@ const StudentFeeInClassrooms: FC<StudentFeeInClassroomsProps> = ({ onLoading, ye
     if (!studentFeeInClassroom) {
         return <div className='w-full flex justify-center'>ไม่มีข้อมูลห้องเรียน</div>
     }
-
-    console.log(studentFeeInClassroom);
     
 
     return (

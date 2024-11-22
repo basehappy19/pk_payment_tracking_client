@@ -29,20 +29,20 @@ export default function CardLoginUser() {
 
     return (
         <main className="flex justify-center items-center min-h-[80vh]">
-            <Card className="w-full md:w-1/2">
+            <Card className="w-full md:w-1/2 bg-gradient-to-t from-pink-200 to-red-200 border-pink-400 border-2 dark:from-stone-800 dark:to-zinc-800 dark:border-stone-700/50">
                 <CardHeader>
                     <CardTitle className="text-2xl font-medium text-center">ล็อกอิน</CardTitle>
-                    <CardDescription className="text-center">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</CardDescription>
+                    <CardDescription className="text-center text-pink-500">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={onSubmit} className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="username">ชื่อผู้ใช้</Label>
-                            <Input id="username" name="username" type="text" placeholder="กรอกชื่อผู้ใช้" required />
+                            <Input className='border-pink-300 border dark:border-stone-800' id="username" name="username" type="text" placeholder="กรอกชื่อผู้ใช้" required />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="password">รหัสผ่าน</Label>
-                            <Input id="password" name="password" type="password" placeholder="กรอกรหัสผ่าน" required />
+                            <Input className='border-pink-300 border dark:border-stone-800' id="password" name="password" type="password" placeholder="กรอกรหัสผ่าน" required />
                         </div>
                         <Button type="submit" className="w-full">เข้าสู่ระบบ</Button>
                     </form>
