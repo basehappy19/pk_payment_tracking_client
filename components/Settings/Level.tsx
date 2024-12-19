@@ -135,7 +135,7 @@ export const ListLevels = ({ levels }: { levels: Level }) => {
         <TableBody>
           {levels.data && levels.data.length > 0 ? (
             levels.data.map((level) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={level.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={level.id}>
                 <TableCell>{level.name}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(level.createdAt).toLocaleString()}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(level.updatedAt).toLocaleString()}</TableCell>

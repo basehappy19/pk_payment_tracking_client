@@ -323,7 +323,7 @@ export const ImportCSV = () => {
                     </div>
                     <Table className='dark:bg-neutral-900/30 bg-gray-100'>
                         <TableHeader className="bg-gradient-to-r from-slate-200 to-gray-200 dark:from-zinc-700 dark:to-gray-700">
-                            <TableRow className='border-white border-b-4 dark:border-b-zinc-950'>
+                            <TableRow className='border-white border-b-4 dark:border-b-neutral-950'>
                                 {Object.keys(preview[0]).map((key, index) => (
                                     <TableHead className="dark:text-slate-200 text-slate-700" key={index}>
                                         {key}

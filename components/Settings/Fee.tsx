@@ -197,7 +197,7 @@ export const ListFees = ({ fees, education_year_options, education_term_options 
         <TableBody>
           {fees.data && fees.data.length > 0 ? (
             fees.data.map((fee) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={fee.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={fee.id}>
                 <TableCell>{fee.name}</TableCell>
                 <TableCell>{fee.amount}</TableCell>
                 <TableCell>{fee.education_term.name}/{fee.education_year.name}</TableCell>

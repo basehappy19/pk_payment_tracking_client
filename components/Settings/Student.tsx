@@ -149,7 +149,7 @@ export const ListStudents = ({ students }: { students: Student }) => {
         <TableBody>
           {students.data && students.data.length > 0 ? (
             students.data.map((student) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={student.sid}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={student.sid}>
                 <TableCell>{student.sid}</TableCell>
                 <TableCell>{student.name}</TableCell>
                 <TableCell>{student.cid}</TableCell>

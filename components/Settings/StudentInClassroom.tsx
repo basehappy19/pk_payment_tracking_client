@@ -315,7 +315,7 @@ export const ListStudentInClassrooms = ({ studentInclassrooms, classroomOptions 
         <TableBody>
           {studentInclassrooms.data && studentInclassrooms.data.length > 0 ? (
             studentInclassrooms.data.map((studentInclassroom) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={studentInclassroom.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={studentInclassroom.id}>
                 <TableCell>{studentInclassroom.student_sid}</TableCell>
                 <TableCell>{studentInclassroom.classroom.education_term.name}/{studentInclassroom.classroom.education_year.name}</TableCell>
                 <TableCell>{studentInclassroom.classroom.level.name}/{studentInclassroom.classroom.room.name}</TableCell>

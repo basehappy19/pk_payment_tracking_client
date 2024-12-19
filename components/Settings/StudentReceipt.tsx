@@ -197,7 +197,7 @@ export const ListStudentReceipts = ({ studentReceipts, receiptBookOptions }: { s
         <TableBody>
           {studentReceipts.data && studentReceipts.data.length > 0 ? (
             studentReceipts.data.map((studentReceipt) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={studentReceipt.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={studentReceipt.id}>
                 <TableCell>{studentReceipt.studentInClassroom.student_sid}</TableCell>
                 <TableCell>{studentReceipt.amount}</TableCell>
                 <TableCell>{studentReceipt.receiptBook.name}</TableCell>

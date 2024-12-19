@@ -232,7 +232,7 @@ export const ListClassrooms = ({ options, classrooms }: { options: ClassroomOpti
         <TableBody>
           {classrooms.data && classrooms.data.length > 0 ? (
             classrooms.data.map((classroom) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={classroom.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={classroom.id}>
                 <TableCell>{classroom.education_term.name}/{classroom.education_year.name}</TableCell>
                 <TableCell>{classroom.level.name}/{classroom.room.name}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(classroom.createdAt).toLocaleString()}</TableCell>

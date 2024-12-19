@@ -19,20 +19,20 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
   };
 
   return (
-    <div className="bg-gradient-to-r dark:from-[#1c1b1e] dark:to-zinc-800 bg-[#FAADCC] text-black dark:text-white dark:shadow-none shadow-sm drop-shadow-md shadow-[#D97CA1]">
+    <div className="bg-gradient-to-r dark:from-[#1c1b1e] dark:to-zinc-800 from-red-200 to-pink-300 text-black dark:text-white dark:shadow-none shadow-md shadow-red-400/60">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3">
             <Image src={logo_pk} quality={100} width={40} height={40} alt="logo" />
-            <span className="font-semibold text-xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
+            <span className="font-semibold text-3xl">ระบบตรวจสอบค่าบำรุงการศึกษา</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-4 ">
-            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-[#E75B89] transition-colors">
+            <Link href={`${session && session.role === 'student' ? "/fee" : "/auth/student"}`} className="hover:text-pink-500 transition-colors">
               ตรวจสอบการชำระค่าบำรุงการศึกษา
             </Link>
             {!session ? (
-              <Link href="/auth/user" className="hover:text-[#E75B89] transition-colors">
+              <Link href="/auth/user" className="hover:text-pink-500 transition-colors">
                 เข้าสู่ระบบ
               </Link>
             ) : (

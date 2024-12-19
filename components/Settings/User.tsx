@@ -191,7 +191,7 @@ export const ListUsers = ({ users, roles }: { users: User, roles: { data: { id: 
         <TableBody>
           {users.data && users.data.length > 0 ? (
             users.data.map((user) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={user.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={user.id}>
                 <TableCell>{user.username}</TableCell>
                 <TableCell>{user.fullname}</TableCell>
                 <TableCell>{user.role.name}</TableCell>

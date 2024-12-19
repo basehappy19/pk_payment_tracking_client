@@ -142,7 +142,7 @@ export const ListReceiptBooks = ({ receiptBooks }: { receiptBooks: ReceiptBook }
         <TableBody>
           {receiptBooks.data && receiptBooks.data.length > 0 ? (
             receiptBooks.data.map((receiptBook) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={receiptBook.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={receiptBook.id}>
                 <TableCell>{receiptBook.name}</TableCell>
                 <TableCell>{receiptBook.total_page}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(receiptBook.createdAt).toLocaleString()}</TableCell>
