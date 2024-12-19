@@ -255,7 +255,7 @@ export const ListFeeForClassrooms = ({ feeForClassrooms, feeOptions, classroomOp
                 <TableBody>
                     {feeForClassrooms.data && feeForClassrooms.data.length > 0 ? (
                         feeForClassrooms.data.map((feeForClassroom) => (
-                            <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={feeForClassroom.id}>
+                            <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={feeForClassroom.id}>
                                 <TableCell>{feeForClassroom.fee.name}</TableCell>
                                 <TableCell>{feeForClassroom.fee.amount}</TableCell>
                                 <TableCell>{feeForClassroom.classroom.education_term.name}/{feeForClassroom.classroom.education_year.name}</TableCell>

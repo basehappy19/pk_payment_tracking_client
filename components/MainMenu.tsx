@@ -67,7 +67,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                             )}
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
-                                href={`/admin`}
+                                href={`/accounting`}
                                 className="font-semibold text-lg bg-gradient-to-r col-span-1 from-violet-600 via-purple-500 to-violet-600 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <TheOfficialIcon />
@@ -78,7 +78,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
 
                             {session && session.role === 'user' && session.data.role?.id === 3 && (
                                 <Link
-                                    href={`/admin`}
+                                    href={`/dashboard`}
                                     className="font-semibold text-lg bg-gradient-to-r col-span-1 from-slate-700 via-gray-500 to-slate-700 hover:bg-yellow-600 text-white p-4 rounded-lg shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center justify-center space-y-2 w-full h-full min-h-[120px]"
                                 >
                                     <GraphIcon />
@@ -117,7 +117,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                         คณะกรรมการพัฒนาโปแกรม
                     </p>
                     <div className="grid md:grid-cols-2 justify-center gap-2">
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col col-span-1 md:col-span-1 text-white justify-center">
                                 <Image width={96} height={96} alt={`dr`} className='w-24 rounded-md object-cover bg-gradient-to-t from-blue-400 to-sky-400' src={drImg} />
                                 <div className='text-center'>
@@ -126,7 +126,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={longuom} />
                                 <div className='text-center'>
@@ -135,7 +135,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
                                 <div className='text-center'>
@@ -144,7 +144,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
                                 <div className='text-center'>
@@ -153,7 +153,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={mongkon} />
                                 <div className='text-center'>
@@ -162,7 +162,7 @@ const MainMenu = ({ session }: { session: Session | null }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-900 dark:via-rose-600 dark:to-pink-900 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
+                        <div className="p-4 dark:shadow-rose-950 dark:from-pink-950 dark:via-rose-600 dark:to-pink-950 bg-gradient-to-r via-rose-300 from-pink-400 to-pink-400 w-full px-2 py-4 rounded-xl shadow-xl shadow-pink-300 drop-shadow-md">
                             <div className="flex items-center flex-col text-white justify-center">
                                 <Image alt={`Image`} width={96} height={96}  className='w-24 rounded-md object-cover' src={Time} />
                                 <div className='text-center'>

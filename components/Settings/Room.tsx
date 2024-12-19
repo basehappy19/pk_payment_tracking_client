@@ -135,7 +135,7 @@ export const ListRooms = ({ rooms }: { rooms: Room }) => {
         <TableBody>
           {rooms.data && rooms.data.length > 0 ? (
             rooms.data.map((room) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={room.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={room.id}>
                 <TableCell>{room.name}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(room.createdAt).toLocaleString()}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(room.updatedAt).toLocaleString()}</TableCell>

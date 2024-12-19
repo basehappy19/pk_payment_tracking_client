@@ -11,7 +11,7 @@ export default async function Home() {
   const session = await getUserData()
   
   return (
-    <main className="bg-gradient-to-br from-[#FAD0EA] via-[#FCCEDC] to-[#F287AB] flex items-center justify-center min-h-screen p-4">
+    <main className="bg-gradient-to-t from-pink-400/40 to-pink-200/40 dark:from-pink-950/40 dark:to-stone-950/50 flex items-center justify-center min-h-screen p-4">
       <MainMenu session={session} />
     </main>
   );

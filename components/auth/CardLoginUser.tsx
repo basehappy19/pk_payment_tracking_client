@@ -29,7 +29,7 @@ export default function CardLoginUser() {
 
     return (
         <main className="flex justify-center items-center min-h-[80vh]">
-            <Card className="w-full md:w-1/2 bg-gradient-to-t from-pink-200 to-red-200 border-pink-400 border-2 dark:from-stone-800 dark:to-zinc-800 dark:border-stone-700/50">
+            <Card className="w-full md:w-1/2 bg-gradient-to-t from-pink-200 to-rose-100 border-pink-300 border-2 dark:from-stone-800 dark:to-zinc-800 dark:border-stone-700/50">
                 <CardHeader>
                     <CardTitle className="text-2xl font-medium text-center">ล็อกอิน</CardTitle>
                     <CardDescription className="text-center text-pink-500">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ</CardDescription>

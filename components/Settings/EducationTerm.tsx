@@ -135,7 +135,7 @@ export const ListEducationTerms = ({ terms }: { terms: EducationTerm }) => {
         <TableBody>
           {terms.data && terms.data.length > 0 ? (
             terms.data.map((term) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={term.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={term.id}>
                 <TableCell>{term.name}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(term.createdAt).toLocaleString()}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(term.updatedAt).toLocaleString()}</TableCell>

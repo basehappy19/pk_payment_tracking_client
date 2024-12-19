@@ -135,7 +135,7 @@ export const ListEducationYears = ({ years }: { years: EducationYear }) => {
         <TableBody>
           {years.data && years.data.length > 0 ? (
             years.data.map((year) => (
-              <TableRow className='border-white border-b-4 dark:border-b-zinc-950' key={year.id}>
+              <TableRow className='border-white border-b-4 dark:border-b-neutral-950' key={year.id}>
                 <TableCell>{year.name}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(year.createdAt).toLocaleString()}</TableCell>
                 <TableCell className='text-blue-500'>{new Date(year.updatedAt).toLocaleString()}</TableCell>
