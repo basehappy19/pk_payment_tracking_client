@@ -62,6 +62,7 @@ const Navbar: FC<NavbarProps> = ({ session }) => {
 
           </div>
         )}
+        test
       </nav>
     </div>
   );
